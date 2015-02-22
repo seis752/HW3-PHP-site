@@ -12,6 +12,15 @@ $userService = new UserService(new Database());
 
 $user = $userService->findByUsername($_SESSION['username']);
 
+// Handle "remove friend" action.
+if ($_SERVER['REQUEST_METHOD'] == 'GET')
+{
+    if (isset($_GET['fid']))
+    {
+        $userService->removeFriend($user->getId(), $_GET['fid']);
+    }
+}
+
 $friends = $userService->findFriends($user->getId());
 
 ?>
@@ -24,7 +33,7 @@ $friends = $userService->findFriends($user->getId());
         <li>
             <?php echo $user->getDisplayName(); ?>
             &nbsp;
-            <a href="friends.php">Remove</a>
+            <a href="friends.php?fid=<?php echo $user->getId(); ?>">Remove</a>
         </li>
     <?php endforeach ?>
 </ul>

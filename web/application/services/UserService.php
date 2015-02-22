@@ -79,15 +79,29 @@ class UserService {
      */
     public function addFriend($userId, $friendId)
     {
-        // Insert the record to relate the "friend" to the "user".
+        // INSERT the record to relate the "friend" to the "user".
         $query = sprintf("INSERT INTO `relationship` (`user_1_id`, `user_2_id`) VALUES (%d, %d);", $userId, $friendId);
         $result = $this->db->query($query);
 
-        // Insert the record to relate the "user" to the "friend".
+        // INSERT the record to relate the "user" to the "friend".
         $query = sprintf("INSERT INTO `relationship` (`user_1_id`, `user_2_id`) VALUES (%d, %d);", $friendId, $userId);
         $result = $this->db->query($query);
-        var_dump($result);
 
+        // TODO: Add logic to verify success of the database operations.
+        return true;
+    }
+
+    public function removeFriend($userId, $friendId)
+    {
+        // DELETE the record relating the "friend" to the "user".
+        $query = sprintf("DELETE FROM `relationship` WHERE `user_1_id` = %d AND `user_2_id` = %d;", $userId, $friendId);
+        $result = $this->db->query($query);
+
+        // DELETE the record relating the "user" to the "friend".
+        $query = sprintf("DELETE FROM `relationship` WHERE `user_1_id` = %d AND `user_2_id` = %d;", $friendId, $userId);
+        $result = $this->db->query($query);
+
+        // TODO: Add logic to verify success of the database operations.
         return true;
     }
 
