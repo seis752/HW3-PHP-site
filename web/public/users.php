@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     if (isset($_POST['user_id']))
     {
-        $userService->addFriend($_POST['user_id'], $currentUser->getId());
+        $userService->addFriend($currentUser->getId(), $_POST['user_id']);
     }
 }
 

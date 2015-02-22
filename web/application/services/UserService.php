@@ -73,10 +73,18 @@ class UserService {
         return $users;
     }
 
-    public function addFriend($friendId, $userId)
+    /**
+     * TODO: Could be 1 insert if the query to find user's friends isn't
+     * dependent on which user column represents user and friend.
+     */
+    public function addFriend($userId, $friendId)
     {
+        // Insert the record to relate the "friend" to the "user".
         $query = sprintf("INSERT INTO `relationship` (`user_1_id`, `user_2_id`) VALUES (%d, %d);", $userId, $friendId);
+        $result = $this->db->query($query);
 
+        // Insert the record to relate the "user" to the "friend".
+        $query = sprintf("INSERT INTO `relationship` (`user_1_id`, `user_2_id`) VALUES (%d, %d);", $friendId, $userId);
         $result = $this->db->query($query);
         var_dump($result);
 
