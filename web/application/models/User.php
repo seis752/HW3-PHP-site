@@ -5,6 +5,7 @@ class User {
     protected $id;
     protected $username;
     protected $displayName;
+    protected $friends;
 
     public static function create($array)
     {
@@ -31,4 +32,28 @@ class User {
         return $this->displayName;
     }
 
+    public function getFriends()
+    {
+        return $this->friends;
+    }
+
+    public function setFriends($users)
+    {
+        $this->friends = $users;
+    }
+
+    public function isFriend($userId)
+    {
+        $isFriend = false;
+
+        foreach ($this->friends as $friend)
+        {
+            if ($userId == $friend->getId())
+            {
+                $isFriend = true;
+            }
+        }
+
+        return $isFriend;
+    }
 }

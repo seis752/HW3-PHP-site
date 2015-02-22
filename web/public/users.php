@@ -9,6 +9,14 @@ session_start();
 AuthenticationService::check();
 
 $userService = new UserService(new Database());
+
+$currentUser = $userService->findByUsername($_SESSION['username']);
+
+// TODO: Refactor to "loadFriends()", to contain this within UserService?
+// Get current user's friends list.
+$currentUserFriends = $userService->findFriends($currentUser->getId());
+$currentUser->setFriends($currentUserFriends);
+
 $users = $userService->findAll();
 
 ?>
@@ -21,9 +29,17 @@ $users = $userService->findAll();
     <li>
         <?php echo $user->getDisplayName(); ?>
         &nbsp;
-        <form action="users.php" method="post">
-            <button type="submit">Add</button>
-        </form>
+
+        <?php if ($currentUser->getId() == $user->getId()): ?>
+            is you
+        <?php elseif ($currentUser->isFriend($user->getId())): ?>
+            is friend
+        <?php else: ?>
+            <form action="users.php" method="post">
+                <button type="submit">Add</button>
+            </form>
+        <?php endif; ?>
+
     </li>
 <?php endforeach ?>
 </ul>

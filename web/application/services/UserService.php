@@ -38,6 +38,7 @@ class UserService {
 //        return $user;
 //    }
 
+    // TODO: Replace uses with "findById"?
     public function findByUsername($username)
     {
         $user = null;
