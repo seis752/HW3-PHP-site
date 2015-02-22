@@ -12,6 +12,17 @@ $userService = new UserService(new Database());
 
 $currentUser = $userService->findByUsername($_SESSION['username']);
 
+// Handle "add friend" action.
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    if (isset($_POST['user_id']))
+    {
+        $userService->addFriend($_POST['user_id'], $currentUser->getId());
+    }
+}
+
+
+
 // TODO: Refactor to "loadFriends()", to contain this within UserService?
 // Get current user's friends list.
 $currentUserFriends = $userService->findFriends($currentUser->getId());
@@ -36,6 +47,7 @@ $users = $userService->findAll();
             is friend
         <?php else: ?>
             <form action="users.php" method="post">
+                <input type="hidden" name="user_id" value="<?php echo $user->getId(); ?>" />
                 <button type="submit">Add</button>
             </form>
         <?php endif; ?>

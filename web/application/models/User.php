@@ -42,6 +42,7 @@ class User {
         $this->friends = $users;
     }
 
+    // TODO: Move to UserService.hasFriend(user, friend)?
     public function isFriend($userId)
     {
         $isFriend = false;

@@ -73,4 +73,14 @@ class UserService {
         return $users;
     }
 
+    public function addFriend($friendId, $userId)
+    {
+        $query = sprintf("INSERT INTO `relationship` (`user_1_id`, `user_2_id`) VALUES (%d, %d);", $userId, $friendId);
+
+        $result = $this->db->query($query);
+        var_dump($result);
+
+        return true;
+    }
+
 }
