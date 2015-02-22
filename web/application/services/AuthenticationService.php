@@ -2,14 +2,33 @@
 
 class AuthenticationService
 {
-    public static function authenticate($username, $password)
+    protected $db;
+
+    public function __construct(Database $db)
     {
-        // TODO: Replace with database query.
-        if (($username == 'user1') && ($password == 'password'))
+        $this->db = $db;
+    }
+
+    public function authenticate($username, $password)
+    {
+        $user = null;
+
+        $query = sprintf("SELECT * FROM user WHERE username = '%s' AND password = '%s'",
+            $username, $password);
+
+        $result = $this->db->query($query);
+
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+
+        if (null != $row) {
+            $user = User::create($row);
+        }
+
+        if (null != $user)
         {
             $_SESSION['isAuthenticated'] = true;
-            // TODO: Add "id" to session data.
-            $_SESSION['username'] = $username;
+            $_SESSION['userId'] = $user->getId();
+            $_SESSION['username'] = $user->getUsername();
             return true;
         }
 

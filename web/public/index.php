@@ -14,7 +14,10 @@ if (AuthenticationService::isAuthenticated())
 // Handle form submission.
 if (isset($_POST['username']) && isset($_POST['password']))
 {
-    if (AuthenticationService::authenticate($_POST['username'], $_POST['password']))
+
+    $authenticationService = new AuthenticationService(new Database());
+
+    if ($authenticationService->authenticate($_POST['username'], $_POST['password']))
     {
         header('Location: profile.php');
     }
