@@ -8,11 +8,11 @@ session_start();
 
 AuthenticationService::check();
 
-$userRepository = new UserRepository(new Database());
+$userService = new UserService(new Database());
 
-$user = $userRepository->findByUsername($_SESSION['username']);
+$user = $userService->findByUsername($_SESSION['username']);
 
-$friends = $userRepository->findFriends($user->getId());
+$friends = $userService->findFriends($user->getId());
 
 ?>
 <?php require_once('includes/document-start.php'); ?>

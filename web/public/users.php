@@ -8,8 +8,8 @@ session_start();
 
 AuthenticationService::check();
 
-$userRepository = new UserRepository(new Database());
-$users = $userRepository->findAll();
+$userService = new UserService(new Database());
+$users = $userService->findAll();
 
 ?>
 <?php require_once('includes/document-start.php'); ?>
