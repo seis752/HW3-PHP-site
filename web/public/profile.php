@@ -10,22 +10,22 @@ AuthenticationService::check();
 
 $userRepository = new UserRepository(new Database());
 
-$u = $userRepository->findByUsername($_SESSION['username']);
+$user = $userRepository->findByUsername($_SESSION['username']);
 
-$users = $userRepository->findAll();
+$friends = $userRepository->findFriends($user->getId());
 
 ?>
 <?php require_once('includes/document-start.php'); ?>
 <?php require_once('includes/navigation.php'); ?>
 
 <h1>Profile</h1>
-<div><?php echo $u->getDisplayName(); ?></div>
+<div><?php echo $user->getDisplayName(); ?></div>
 
 <div>
     <h2>Friends</h2>
-    <?php if (isset($users)): ?>
+    <?php if (isset($friends)): ?>
     <ul>
-        <?php foreach ($users as $user) : ?>
+        <?php foreach ($friends as $user) : ?>
             <li><?php echo $user->getDisplayName(); ?></li>
         <?php endforeach ?>
     </ul>

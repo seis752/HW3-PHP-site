@@ -9,7 +9,10 @@ session_start();
 AuthenticationService::check();
 
 $userRepository = new UserRepository(new Database());
-$users = $userRepository->findAll();
+
+$user = $userRepository->findByUsername($_SESSION['username']);
+
+$friends = $userRepository->findFriends($user->getId());
 
 ?>
 <?php require_once('includes/document-start.php'); ?>
@@ -17,7 +20,7 @@ $users = $userRepository->findAll();
 
 <h1>Friends</h1>
 <ul>
-    <?php foreach ($users as $user) : ?>
+    <?php foreach ($friends as $user) : ?>
         <li>
             <?php echo $user->getDisplayName(); ?>
             &nbsp;
