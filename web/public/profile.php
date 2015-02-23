@@ -2,15 +2,30 @@
 
 require_once('../application/bootstrap.php');
 
+$userService = new UserService(new Database());
+
 $title = 'Profile';
 
 session_start();
 
 AuthenticationService::check();
 
-$userService = new UserService(new Database());
+$currentUser = $userService->fetchCurrentUser();
 
-$user = $userService->findByUsername($_SESSION['username']);
+$user = $currentUser;
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET')
+{
+    if (isset($_GET['uid']))
+    {
+        $selectedUser = $userService->findById($_GET['uid']);
+
+        if ($selectedUser != null)
+        {
+            $user = $selectedUser;
+        }
+    }
+}
 
 $friends = $userService->findFriends($user->getId());
 
@@ -26,7 +41,7 @@ $friends = $userService->findFriends($user->getId());
     <?php if (isset($friends)): ?>
     <ul>
         <?php foreach ($friends as $user) : ?>
-            <li><?php echo $user->getDisplayName(); ?></li>
+            <li><a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a></li>
         <?php endforeach ?>
     </ul>
     <?php endif; ?>

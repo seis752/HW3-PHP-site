@@ -2,15 +2,15 @@
 
 require_once('../application/bootstrap.php');
 
+$userService = new UserService(new Database());
+
 $title = 'Users';
 
 session_start();
 
 AuthenticationService::check();
 
-$userService = new UserService(new Database());
-
-$currentUser = $userService->findByUsername($_SESSION['username']);
+$currentUser = $userService->fetchCurrentUser();
 
 // Handle "add friend" action.
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -20,8 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $userService->addFriend($currentUser->getId(), $_POST['user_id']);
     }
 }
-
-
 
 // TODO: Refactor to "loadFriends()", to contain this within UserService?
 // Get current user's friends list.
@@ -38,12 +36,12 @@ $users = $userService->findAll();
 <ul>
 <?php foreach ($users as $user) : ?>
     <li>
-        <?php echo $user->getDisplayName(); ?>
+        <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
         &nbsp;
 
         <?php if ($currentUser->getId() == $user->getId()): ?>
             is you
-        <?php elseif ($currentUser->isFriend($user->getId())): ?>
+        <?php elseif ($userService->checkHasFriend($currentUser->getId(), $user->getId())): ?>
             is friend
         <?php else: ?>
             <form action="users.php" method="post">

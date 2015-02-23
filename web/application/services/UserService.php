@@ -9,6 +9,11 @@ class UserService {
         $this->db = $db;
     }
 
+    public function fetchCurrentUser()
+    {
+        return $this->findById($_SESSION['userId']);
+    }
+
     public function findAll()
     {
         $users = [];
@@ -25,20 +30,19 @@ class UserService {
         return $users;
     }
 
-//    public function findById($id)
-//    {
-//        $user = null;
-//
-//        $result = $this->db->query(sprintf("SELECT * FROM user WHERE user.id = %d", $id));
-//
-//        $row = $result->fetch_array(MYSQLI_ASSOC);
-//
-//        $user = User::create($row);
-//
-//        return $user;
-//    }
+    public function findById($id)
+    {
+        $user = null;
 
-    // TODO: Replace uses with "findById"?
+        $result = $this->db->query(sprintf("SELECT * FROM user WHERE user.id = %d", $id));
+
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+
+        $user = User::create($row);
+
+        return $user;
+    }
+
     public function findByUsername($username)
     {
         $user = null;
@@ -71,6 +75,23 @@ class UserService {
         }
 
         return $users;
+    }
+
+    public function checkHasFriend($userId, $friendId)
+    {
+        $hasFriend = false;
+
+        $friends = $this->findFriends($userId);
+
+        foreach ($friends as $friend)
+        {
+            if ($friend->getId() == $friendId)
+            {
+                $hasFriend = true;
+            }
+        }
+
+        return $hasFriend;
     }
 
     /**

@@ -2,26 +2,26 @@
 
 require_once('../application/bootstrap.php');
 
+$userService = new UserService(new Database());
+
 $title = 'Friends';
 
 session_start();
 
 AuthenticationService::check();
 
-$userService = new UserService(new Database());
-
-$user = $userService->findByUsername($_SESSION['username']);
+$currentUser = $userService->fetchCurrentUser();
 
 // Handle "remove friend" action.
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
 {
     if (isset($_GET['fid']))
     {
-        $userService->removeFriend($user->getId(), $_GET['fid']);
+        $userService->removeFriend($currentUser->getId(), $_GET['fid']);
     }
 }
 
-$friends = $userService->findFriends($user->getId());
+$friends = $userService->findFriends($currentUser->getId());
 
 ?>
 <?php require_once('includes/document-start.php'); ?>
@@ -31,7 +31,7 @@ $friends = $userService->findFriends($user->getId());
 <ul>
     <?php foreach ($friends as $user) : ?>
         <li>
-            <?php echo $user->getDisplayName(); ?>
+            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
             &nbsp;
             <a href="friends.php?fid=<?php echo $user->getId(); ?>">Remove</a>
         </li>

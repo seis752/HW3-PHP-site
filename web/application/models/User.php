@@ -42,19 +42,19 @@ class User {
         $this->friends = $users;
     }
 
-    // TODO: Move to UserService.hasFriend(user, friend)?
-    public function isFriend($userId)
-    {
-        $isFriend = false;
-
-        foreach ($this->friends as $friend)
-        {
-            if ($userId == $friend->getId())
-            {
-                $isFriend = true;
-            }
-        }
-
-        return $isFriend;
-    }
+//    // TODO: Move to UserService.hasFriend(user, friend)?
+//    public function hasFriend($userId)
+//    {
+//        $isFriend = false;
+//
+//        foreach ($this->friends as $friend)
+//        {
+//            if ($userId == $friend->getId())
+//            {
+//                $isFriend = true;
+//            }
+//        }
+//
+//        return $isFriend;
+//    }
 }
