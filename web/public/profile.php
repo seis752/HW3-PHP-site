@@ -48,20 +48,20 @@ $friends = $userService->findFriends($user->getId());
 </div>
 
 <div>
+    <h2>Post Message</h2>
+    <form action="profile.php" method="post">
+        <textarea id="message" name="message"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div>
     <h2>Messages</h2>
     <ul>
         <li>message</li>
         <li>message</li>
         <li>message</li>
     </ul>
-</div>
-
-<div>
-    <h2>Post Message</h2>
-    <form action="profile.php" method="post">
-        <textarea id="message" name="message"></textarea>
-        <button type="submit">Submit</button>
-    </form>
 </div>
 
 <?php require_once('includes/document-end.php'); ?>
