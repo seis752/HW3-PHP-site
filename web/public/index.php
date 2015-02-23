@@ -24,18 +24,33 @@ if (isset($_POST['username']) && isset($_POST['password']))
 
 ?>
 <?php require_once('includes/document-start.php'); ?>
+<?php require_once('includes/navigation.php'); ?>
 
 <div class="container">
-<h1>Login</h1>
+    <div class="row">
+        <div class="col-md-6">
 
-<form action="index.php" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="text" />
-    <button type="submit">Submit</button>
-</form>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Login</h1>
+                </div>
+                <div class="panel-body">
+                    <form action="index.php" method="post">
+                        <div>
+                            <label for="username">Username</label><br/>
+                            <input id="username" name="username" type="text" />
+                        </div>
+                        <div>
+                            <label for="password">Password</label><br/>
+                            <input id="password" name="password" type="text" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
 
-<div><a href="register.php">Register</a></div>
+        </div>
+    </div>
 </div>
+
 <?php require_once('includes/document-end.php'); ?>

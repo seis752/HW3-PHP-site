@@ -33,27 +33,39 @@ $users = $userService->findAll();
 <?php require_once('includes/navigation.php'); ?>
 
 <div class="container">
-<h1>Users</h1>
-<ul>
-<?php foreach ($users as $user) : ?>
-    <li>
-        <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
-        &nbsp;
+    <h1>Users</h1>
 
-        <?php if ($currentUser->getId() == $user->getId()): ?>
-            is you
-        <?php elseif ($userService->checkHasFriend($currentUser->getId(), $user->getId())): ?>
-            is friend
-        <?php else: ?>
-            <form action="users.php" method="post">
-                <input type="hidden" name="user_id" value="<?php echo $user->getId(); ?>" />
-                <button type="submit">Add</button>
-            </form>
-        <?php endif; ?>
-
-    </li>
-<?php endforeach ?>
-</ul>
+    <div class="col-md-6">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($users as $user) : ?>
+                <tr>
+                    <td>
+                        <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
+                    </td>
+                    <td>
+                    <?php if ($currentUser->getId() == $user->getId()): ?>
+                        <span class="label label-info">You</span>
+                    <?php elseif ($userService->checkHasFriend($currentUser->getId(), $user->getId())): ?>
+                        <span class="label label-info">Friend</span>
+                    <?php else: ?>
+                        <form action="users.php" method="post">
+                            <input type="hidden" name="user_id" value="<?php echo $user->getId(); ?>" />
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </form>
+                    <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+        </table>
     </div>
+</div>
 
 <?php require_once('includes/document-end.php'); ?>

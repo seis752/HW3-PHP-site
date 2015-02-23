@@ -28,16 +28,30 @@ $friends = $userService->findFriends($currentUser->getId());
 <?php require_once('includes/navigation.php'); ?>
 
 <div class="container">
-<h1>Friends</h1>
-<ul>
-    <?php foreach ($friends as $user) : ?>
-        <li>
-            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
-            &nbsp;
-            <a href="friends.php?fid=<?php echo $user->getId(); ?>">Remove</a>
-        </li>
-    <?php endforeach ?>
-</ul>
+    <h1><?php echo $currentUser->getDisplayName(); ?> : Friends</h1>
+
+    <div class="col-md-6">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($friends as $user) : ?>
+                <tr>
+                    <td>
+                        <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
+                    </td>
+                    <td>
+                        <a href="friends.php?fid=<?php echo $user->getId(); ?>">Remove</a>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+        </table>
     </div>
+</div>
 
 <?php require_once('includes/document-end.php'); ?>

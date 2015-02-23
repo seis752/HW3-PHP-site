@@ -50,42 +50,72 @@ $messages = $messageService->findMessages($user->getId());
 <?php require_once('includes/navigation.php'); ?>
 
 <div class="container">
-    <div>
-<h1>Profile</h1>
-<div><?php echo $user->getDisplayName(); ?></div>
 
-<div>
-    <h2>Friends</h2>
-    <?php if (isset($friends)): ?>
-    <ul>
-        <?php foreach ($friends as $friend) : ?>
-            <li><a href="profile.php?uid=<?php echo $friend->getId(); ?>"><?php echo $friend->getDisplayName(); ?></a></li>
-        <?php endforeach ?>
-    </ul>
-    <?php endif; ?>
-</div>
-
-<div>
-    <h2>Post Message</h2>
-    <form action="profile.php" method="post">
-        <input type="hidden" name="user_id" value="<?php echo $user->getId(); ?>" />
-        <textarea id="message" name="message"></textarea>
-        <button type="submit">Submit</button>
-    </form>
-</div>
-
-<div>
-    <h2>Messages</h2>
-    <ul>
-        <?php foreach ($messages as $message) : ?>
-            <li>
-                <div><?php echo $message->getContent(); ?></div>
-                <div><a href="profile.php?uid=<?php echo $message->getPosterId(); ?>"><?php echo $message->getPosterDisplayName(); ?></a></div>
-            </li>
-        <?php endforeach ?>
-    </ul>
-</div>
+    <div class="row" style="padding: 0 0 20px 0;">
+        <div class="col-md-6">
+            <h1><?php echo $user->getDisplayName(); ?> : Profile</h1>
+            <?php if ($user->getId() == $currentUser->getId()): ?>
+                <span class="label label-info">You</span>
+            <?php elseif ($userService->checkHasFriend($user->getId(), $currentUser->getId())): ?>
+                <span class="label label-info">Friend</span>
+            <?php endif; ?>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Post a Message</h2>
+                </div>
+                <div class="panel-body">
+                    <form action="profile.php" method="post">
+                        <input type="hidden" name="user_id" value="<?php echo $user->getId(); ?>" />
+                        <textarea id="message" name="message" style="width: 100%; height: 100px;"></textarea>
+                        <br />
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Messages</h2>
+                </div>
+                <div class="panel-body">
+                    <?php foreach ($messages as $message) : ?>
+                        <div class="message">
+                            <div><?php echo $message->getContent(); ?></div>
+                            <div class="message-signature"><a href="profile.php?uid=<?php echo $message->getPosterId(); ?>"><?php echo $message->getPosterDisplayName(); ?></a></div>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Friends</h2>
+
+                    <?php if ($user->getId() == $currentUser->getId()): ?>
+                    <span><a href="friends.php">Manage Your Friends List</a></span>
+                    <?php endif; ?>
+                </div>
+                <div class="panel-body">
+                    <?php foreach ($friends as $user) : ?>
+                        <div>
+                            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
 <?php require_once('includes/document-end.php'); ?>
