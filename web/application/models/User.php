@@ -1,7 +1,7 @@
 <?php
 
-class User {
-
+class User
+{
     protected $id;
     protected $username;
     protected $displayName;
@@ -41,20 +41,4 @@ class User {
     {
         $this->friends = $users;
     }
-
-//    // TODO: Move to UserService.hasFriend(user, friend)?
-//    public function hasFriend($userId)
-//    {
-//        $isFriend = false;
-//
-//        foreach ($this->friends as $friend)
-//        {
-//            if ($userId == $friend->getId())
-//            {
-//                $isFriend = true;
-//            }
-//        }
-//
-//        return $isFriend;
-//    }
 }
