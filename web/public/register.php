@@ -14,6 +14,7 @@ if (AuthenticationService::isAuthenticated())
 ?>
 <?php require_once('includes/document-start.php'); ?>
 
+<div class="container">
 <h1>Register</h1>
 
 <form action="register.php" method="post">
@@ -27,5 +28,6 @@ if (AuthenticationService::isAuthenticated())
 </form>
 
 <div><a href="index.php">Login</a></div>
+    </div>
 
 <?php require_once('includes/document-end.php'); ?>

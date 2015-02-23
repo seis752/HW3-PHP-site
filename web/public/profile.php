@@ -49,6 +49,8 @@ $messages = $messageService->findMessages($user->getId());
 <?php require_once('includes/document-start.php'); ?>
 <?php require_once('includes/navigation.php'); ?>
 
+<div class="container">
+    <div>
 <h1>Profile</h1>
 <div><?php echo $user->getDisplayName(); ?></div>
 
@@ -82,6 +84,8 @@ $messages = $messageService->findMessages($user->getId());
             </li>
         <?php endforeach ?>
     </ul>
+</div>
+    </div>
 </div>
 
 <?php require_once('includes/document-end.php'); ?>

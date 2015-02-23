@@ -27,6 +27,7 @@ $friends = $userService->findFriends($currentUser->getId());
 <?php require_once('includes/document-start.php'); ?>
 <?php require_once('includes/navigation.php'); ?>
 
+<div class="container">
 <h1>Friends</h1>
 <ul>
     <?php foreach ($friends as $user) : ?>
@@ -37,5 +38,6 @@ $friends = $userService->findFriends($currentUser->getId());
         </li>
     <?php endforeach ?>
 </ul>
+    </div>
 
 <?php require_once('includes/document-end.php'); ?>

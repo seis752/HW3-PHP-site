@@ -32,6 +32,7 @@ $users = $userService->findAll();
 <?php require_once('includes/document-start.php'); ?>
 <?php require_once('includes/navigation.php'); ?>
 
+<div class="container">
 <h1>Users</h1>
 <ul>
 <?php foreach ($users as $user) : ?>
@@ -53,5 +54,6 @@ $users = $userService->findAll();
     </li>
 <?php endforeach ?>
 </ul>
+    </div>
 
 <?php require_once('includes/document-end.php'); ?>

@@ -25,6 +25,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 ?>
 <?php require_once('includes/document-start.php'); ?>
 
+<div class="container">
 <h1>Login</h1>
 
 <form action="index.php" method="post">
@@ -36,5 +37,5 @@ if (isset($_POST['username']) && isset($_POST['password']))
 </form>
 
 <div><a href="register.php">Register</a></div>
-
+</div>
 <?php require_once('includes/document-end.php'); ?>
