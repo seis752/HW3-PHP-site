@@ -1,0 +1,12 @@
+I estimate that I spent somewhere around 11-12 hours on this project. About 2-3 hrs were spent with setup issues related to Dreamhost, the database and 
+the like. The rest was on programming/coding. I was able to write code for most of the funcitionality you asked for. But I did not have time to work on
+sorting the messages by friends. I was struggling with how to develop that function. I was able to build code for most functions and items but ran out of
+time to even test out any code. 
+
+My biggest problem was simply the volume of items and features and the time it took to plan them out (design) as well as trying to code it. I did spend some time
+thinking about the database structure and how best to set up the fields with each table. I could have used a different primary key such as friendname or username
+for relationships instead of a relationshipid (integer). Jumping back and forth between SQL, PHP and HTML did slow me down somewhat making sure I didn't mix them
+up or place the code in wrong location. And then I had separated a couple of functions out into separtate files including login.php and navbar.php which added 
+to the number of files to manage. Handling mutiple queries and then setting up the logic to perform functions like remove and add friend took some time. I think
+the handoff of data from the form to the database is always a bit challenging. The syntax trips me up fairly often when missing a needed bracket, semicolon or 
+quotations.
