@@ -1,6 +1,6 @@
 -- insert-data.sql
 
-USE `seismcdo8429`;
+USE `seis752justin_db`;
 
 -- -----------------------------------------------------
 -- Table `user`
