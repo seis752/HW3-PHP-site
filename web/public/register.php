@@ -2,6 +2,9 @@
 
 require_once('../application/bootstrap.php');
 
+$authenticationService = new AuthenticationService(new Database());
+$userService = new UserService(new Database());
+
 $title = 'Register';
 
 session_start();
@@ -9,6 +12,21 @@ session_start();
 if (AuthenticationService::isAuthenticated())
 {
     header('Location: profile.php');
+}
+
+// Handle "regsiter" action.
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    if (isset($_POST['username']) && isset($_POST['password']))
+    {
+        if ($userService->register($_POST['username'], $_POST['password'], $_POST['display_name']))
+        {
+            if ($authenticationService->authenticate($_POST['username'], $_POST['password']))
+            {
+                header('Location: profile.php');
+            }
+        }
+    }
 }
 
 ?>
@@ -35,7 +53,7 @@ if (AuthenticationService::isAuthenticated())
                         </div>
                         <div>
                             <label for="display-name">Display Name</label><br/>
-                            <input id="display-name" name="display-name" type="text" />
+                            <input id="display-name" name="display_name" type="text" />
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

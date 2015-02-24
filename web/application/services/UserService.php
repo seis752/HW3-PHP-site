@@ -51,7 +51,10 @@ class UserService {
 
         $row = $result->fetch_array(MYSQLI_ASSOC);
 
-        $user = User::create($row);
+        var_dump($row);
+        if ($row != null) {
+            $user = User::create($row);
+        }
 
         return $user;
     }
@@ -124,6 +127,21 @@ class UserService {
 
         // TODO: Add logic to verify success of the database operations.
         return true;
+    }
+
+    public function register($username, $password, $displayName)
+    {
+        $user = $this->findByUsername($username);
+
+        if ($user == null)
+        {
+            $query = sprintf("INSERT INTO user (username, password, display_name, created_when) VALUES ('%s', '%s', '%s', now())", $username, $password, $displayName);
+            $result = $this->db->query($query);
+
+            return true;
+        }
+
+        return false;
     }
 
 }
