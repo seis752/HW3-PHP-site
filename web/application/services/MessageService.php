@@ -11,9 +11,6 @@ class MessageService {
 
     public function postMessage($userId, $message, $posterId)
     {
-        echo $userId;
-        echo $message;
-
         $query = sprintf("INSERT INTO `message` (`user_id`, `message`, `created_by`, `created_when`) VALUES (%d, '%s', %d, now());", $userId, $message, $posterId);
 
         $result = $this->db->query($query);

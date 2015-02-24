@@ -27,30 +27,37 @@ $friends = $userService->findFriends($currentUser->getId());
 <?php require_once('includes/document-start.php'); ?>
 <?php require_once('includes/navigation.php'); ?>
 
-<div class="container">
-    <h1><?php echo $currentUser->getDisplayName(); ?> : Friends</h1>
+<div class="container content-container">
 
-    <div class="col-md-6">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($friends as $user) : ?>
+    <div class="row" style="padding: 0 0 20px 0;">
+        <div class="col-md-6">
+            <h1 class="page-h1"><?php echo $currentUser->getDisplayName(); ?> : Friends</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>
-                        <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
-                    </td>
-                    <td>
-                        <a href="friends.php?fid=<?php echo $user->getId(); ?>">Remove</a>
-                    </td>
+                    <th>Name</th>
+                    <th></th>
                 </tr>
-            <?php endforeach ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <?php foreach ($friends as $user) : ?>
+                    <tr>
+                        <td>
+                            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
+                        </td>
+                        <td>
+                            <a href="friends.php?fid=<?php echo $user->getId(); ?>">Remove</a>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

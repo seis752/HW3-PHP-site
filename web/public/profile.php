@@ -49,11 +49,11 @@ $messages = $messageService->findMessages($user->getId());
 <?php require_once('includes/document-start.php'); ?>
 <?php require_once('includes/navigation.php'); ?>
 
-<div class="container">
+<div class="container content-container">
 
     <div class="row" style="padding: 0 0 20px 0;">
         <div class="col-md-6">
-            <h1><?php echo $user->getDisplayName(); ?> : Profile</h1>
+            <h1 class="page-h1"><?php echo $user->getDisplayName(); ?> : Profile</h1>
             <?php if ($user->getId() == $currentUser->getId()): ?>
                 <span class="label label-info">You</span>
             <?php elseif ($userService->checkHasFriend($user->getId(), $currentUser->getId())): ?>
@@ -71,10 +71,13 @@ $messages = $messageService->findMessages($user->getId());
                 </div>
                 <div class="panel-body">
                     <form action="profile.php" method="post">
-                        <input type="hidden" name="user_id" value="<?php echo $user->getId(); ?>" />
-                        <textarea id="message" name="message" style="width: 100%; height: 100px;"></textarea>
-                        <br />
-                        <button type="submit" class="btn btn-primary">Post</button>
+                        <div class="form-row">
+                            <input type="hidden" name="user_id" value="<?php echo $user->getId(); ?>" />
+                            <textarea id="message" name="message" style="width: 100%; height: 100px;"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <button type="submit" class="btn btn-primary">Post</button>
+                        </div>
                     </form>
                 </div>
             </div>

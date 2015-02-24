@@ -32,39 +32,46 @@ $users = $userService->findAll();
 <?php require_once('includes/document-start.php'); ?>
 <?php require_once('includes/navigation.php'); ?>
 
-<div class="container">
-    <h1>Users</h1>
+<div class="container content-container">
 
-    <div class="col-md-6">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($users as $user) : ?>
+    <div class="row" style="padding: 0 0 20px 0;">
+        <div class="col-md-6">
+            <h1 class="page-h1">Users</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>
-                        <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
-                    </td>
-                    <td>
-                    <?php if ($currentUser->getId() == $user->getId()): ?>
-                        <span class="label label-info">You</span>
-                    <?php elseif ($userService->checkHasFriend($currentUser->getId(), $user->getId())): ?>
-                        <span class="label label-info">Friend</span>
-                    <?php else: ?>
-                        <form action="users.php" method="post">
-                            <input type="hidden" name="user_id" value="<?php echo $user->getId(); ?>" />
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        </form>
-                    <?php endif; ?>
-                    </td>
+                    <th>Name</th>
+                    <th></th>
                 </tr>
-            <?php endforeach ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <?php foreach ($users as $user) : ?>
+                    <tr>
+                        <td>
+                            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
+                        </td>
+                        <td>
+                        <?php if ($currentUser->getId() == $user->getId()): ?>
+                            <span class="label label-info">You</span>
+                        <?php elseif ($userService->checkHasFriend($currentUser->getId(), $user->getId())): ?>
+                            <span class="label label-info">Friend</span>
+                        <?php else: ?>
+                            <form action="users.php" method="post">
+                                <input type="hidden" name="user_id" value="<?php echo $user->getId(); ?>" />
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </form>
+                        <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
