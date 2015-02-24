@@ -5,17 +5,21 @@
 
 class Database
 {
-    // TODO: Move to a configuration file.
-    protected $host = 'localhost';
-    protected $database = 'seismcdo8429';
-    protected $user = 'root';
-    protected $password = '';
-
+    protected $database;
+    protected $host;
     protected $mysqli;
+    protected $password;
     protected $result;
-//    public $record;
-//    public $records;
-//    protected $row;
+    protected $user;
+
+    public function __construct()
+    {
+        // See "config.php" for constant definitions.
+        $this->host = DATABASE_HOST;
+        $this->database = DATABASE_DATABASE;
+        $this->user = DATABASE_USER;
+        $this->password = DATABASE_PASSWORD;
+    }
 
     public function connect()
     {
