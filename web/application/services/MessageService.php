@@ -11,7 +11,7 @@ class MessageService {
 
     public function postMessage($userId, $message, $posterId)
     {
-        $query = sprintf("INSERT INTO `message` (`user_id`, `message`, `created_by`, `created_when`) VALUES (%d, '%s', %d, now());", $userId, $message, $posterId);
+        $query = sprintf("INSERT INTO `message` (`user_id`, `message`, `created_by`, `created_when`) VALUES (%d, '%s', %d, now());", $userId, mysql_real_escape_string($message), $posterId);
 
         $result = $this->db->query($query);
 
@@ -29,13 +29,6 @@ class MessageService {
             WHERE m.user_id = %d", $userId);
 
         $result = $this->db->query($query);
-
-//        $rows = $result->fetch_all(MYSQLI_ASSOC);
-//        $rows = $result->fetch_assoc();
-//
-//        foreach ($rows as $row) {
-//            array_push($messages, Message::create($row));
-//        }
 
         while ($row = $result->fetch_assoc())
         {
