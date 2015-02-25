@@ -14,7 +14,7 @@ Description of the key directories and files:
     * `data.sql` - SQL script containing only the sample data.
     * `seis752justin_db.mwb` - MySQL Workbench model file.
     * `structure.sql` - SQL script defining database structure, generated from the MySQL Workbench model file.
-    * `setup.bat` - Useful during development to run SQL scripts against the database.
+    * `setup.bat` - Useful during development to run SQL scripts against the MySQL instance.
 * `web/` - Contains the website files for deployment—the "web root" directory.
     * `application/config.php` - Contains database access credentials
 * `SUMMARY.txt` - The written submission for the assignment.

@@ -5,7 +5,23 @@ SUMMARY.txt
 =====
 An analysis of the Cost/Speed/Quality of PHP and MySql
 =====
+All three: cost, speed, and quality; can be interpreted in multiple ways and intersect with each other at certain points of consideration (e.g., speed can increase or decrease costs, cost might be a constraint that lowers quality).
+* Cost could be the cost of acquisition, the cost of software tools, the cost of hiring people who know how to use the technology, and even the cost of what else has been lost by choosing the technology.
+* Speed could be the performance of the technology itself or the productivity/performance of the people working with it.
+* Quality can be a measure the technology itself (its design, robustness) and a measure of what is created with the technology.
+
+PHP - The acquisition cost of PHP is low (it's free), there is good tooling available for free or relatively low cost, and because so many people have the knowledge and experience (and it's easy to learn), it isn't particularly difficult to find people who can work with it. As an interpreted language, it will be slower than some other technologies on the server. But, with no compile time and it being a dynamic language, it can be very fast for a developer to quickly write and test some functionality. My opinion of PHP (language design) isn't as high as it used to be, after working with several other technologies to compare it with. However, high quality work can be done with it, with the right knowledge and discipline, and it is one of the technologies behind popular highly-regard projects such as WordPress and Drupal.
+
+MySQL - The community edition is free and provides a lot of very useful functionality, perhaps more powerful than some commercial (for pay) products. Again, due to widespread popularity, it shouldn't be difficult to find people who know how to work with it. Likewise, because of the knowledge widely available, getting MySQL up and running and finding people to work with it, shouldn't be a problem in most in scenarios.
 
 =====
 Your thoughts of the environment. Include a sentence on your previous experience. Include challenges and benefits you see in the environment.
 =====
+
+I have previous experience working with PHP and MySQL. From ~2001-2007, I regularly worked with PHP and MySQL, building (mostly) small and (some) medium websites and web applications. Since 2007, my focus (on the server-side) has been ASP.NET (C#) and MS SQL Server. I do still (infrequently) work on projects using PHP and MySQL, but have not been following these technologies closely.
+
+I appreciate the ease and speed with which one can get to work with these technologies, whether that is someone getting started in web development or using these technologies for prototyping or utility projects. I even sometimes use PHP, in collaboration with other tooling, to facilitate build and delivery of static UI templates (HTML/CSS/JavaScript), using "includes", variables and basic control structures to simplify building and maintaining sets of page templates and reusable components.
+
+Cost is an obvious benefit, but the amount of information available online and through the vast number of people who have knowledge of these technologies is perhaps of greater value. Someone, somewhere, has probably already solved just about any type of problem that one might come across. I think cost and information availability make both good learning environments and decent technology choices for general use or when cost is severely limiting factor.
+
+However, the prevalence of information can sometimes be a problem. All information is not good information, and there is surely a lot of questionable information that one might need to dig through before finding good instruction or solutions. For PHP specifically, the dual procedural and object-orientated approaches can be confusing or frustrating when looking for good reference code examples.
