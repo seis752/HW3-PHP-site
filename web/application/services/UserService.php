@@ -20,9 +20,15 @@ class UserService {
 
         $result = $this->db->query("SELECT * FROM user");
 
-        $rows = $result->fetch_all(MYSQLI_ASSOC);
+//        $rows = $result->fetch_all(MYSQLI_ASSOC);
+//        $rows = $result->fetch_assoc();
+//
+//        foreach ($rows as $row)
+//        {
+//            array_push($users, User::create($row));
+//        }
 
-        foreach ($rows as $row)
+        while ($row = $result->fetch_assoc())
         {
             array_push($users, User::create($row));
         }
@@ -36,8 +42,8 @@ class UserService {
 
         $result = $this->db->query(sprintf("SELECT * FROM user WHERE user.id = %d", $id));
 
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-
+//        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $row = $result->fetch_assoc();
         $user = User::create($row);
 
         return $user;
@@ -49,9 +55,10 @@ class UserService {
 
         $result = $this->db->query(sprintf("SELECT * FROM user WHERE user.username = '%s'", $username));
 
-        $row = $result->fetch_array(MYSQLI_ASSOC);
+//        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $row = $result->fetch_assoc();
 
-        var_dump($row);
+//        var_dump($row);
         if ($row != null) {
             $user = User::create($row);
         }
@@ -71,9 +78,20 @@ class UserService {
 
         $result = $this->db->query($query);
 
-        $rows = $result->fetch_all(MYSQLI_ASSOC);
+        // NOTE: "fetch_all" is not working at ASO!
+        // REF: http://stackoverflow.com/questions/25605292/alternative-to-mysqli-fetch-all-needed
+        // REF: http://stackoverflow.com/questions/15029271/mysqli-fetch-all-stopped-working-on-php-5-4-11
+//        $rows = $result->fetch_all(MYSQLI_ASSOC);
+//        $rows = $result->fetch_assoc();
+//
+//        var_dump($rows);
+//
+//        foreach ($rows as $row) {
+//            array_push($users, User::create($row));
+//        }
 
-        foreach ($rows as $row) {
+        while ($row = $result->fetch_assoc())
+        {
             array_push($users, User::create($row));
         }
 

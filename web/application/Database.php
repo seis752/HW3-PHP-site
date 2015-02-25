@@ -24,10 +24,10 @@ class Database
     public function connect()
     {
         // TODO: Replace with a better error handling strategy.
-
         if (null == $this->mysqli)
         {
             $this->mysqli = new mysqli($this->host, $this->user, $this->password, $this->database);
+            $this->mysqli->select_db($this->database);
         }
 
         // REF: http://php.net/manual/en/mysqli.quickstart.connections.php

@@ -30,9 +30,15 @@ class MessageService {
 
         $result = $this->db->query($query);
 
-        $rows = $result->fetch_all(MYSQLI_ASSOC);
+//        $rows = $result->fetch_all(MYSQLI_ASSOC);
+//        $rows = $result->fetch_assoc();
+//
+//        foreach ($rows as $row) {
+//            array_push($messages, Message::create($row));
+//        }
 
-        foreach ($rows as $row) {
+        while ($row = $result->fetch_assoc())
+        {
             array_push($messages, Message::create($row));
         }
 
