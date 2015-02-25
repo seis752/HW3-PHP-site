@@ -2,8 +2,9 @@
 
 require_once('application/bootstrap.php');
 
-$authenticationService = new AuthenticationService(new Database());
-$userService = new UserService(new Database());
+$db = new Database();
+$authenticationService = new AuthenticationService($db);
+$userService = new UserService($db);
 
 $title = 'Register';
 
@@ -203,3 +204,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 </div>
 
 <?php require_once('includes/document-end.php'); ?>
+<?php $db->close(); ?>

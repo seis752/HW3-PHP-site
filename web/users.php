@@ -2,7 +2,8 @@
 
 require_once('application/bootstrap.php');
 
-$userService = new UserService(new Database());
+$db = new Database();
+$userService = new UserService($db);
 
 $title = 'Users';
 
@@ -76,3 +77,4 @@ $users = $userService->findAll();
 </div>
 
 <?php require_once('includes/document-end.php'); ?>
+<?php $db->close(); ?>

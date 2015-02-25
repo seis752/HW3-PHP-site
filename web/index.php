@@ -2,7 +2,8 @@
 
 require_once('application/bootstrap.php');
 
-$authenticationService = new AuthenticationService(new Database());
+$db = new Database();
+$authenticationService = new AuthenticationService($db);
 
 $title = 'Login';
 
@@ -155,3 +156,4 @@ if (isset($_POST['username']) && isset($_POST['password']))
 </div>
 
 <?php require_once('includes/document-end.php'); ?>
+<?php $db->close(); ?>

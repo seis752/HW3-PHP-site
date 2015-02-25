@@ -2,8 +2,9 @@
 
 require_once('application/bootstrap.php');
 
-$userService = new UserService(new Database());
-$messageService = new MessageService(new Database());
+$db = new Database();
+$userService = new UserService($db);
+$messageService = new MessageService($db);
 
 $title = 'Profile';
 
@@ -126,3 +127,4 @@ $messages = $messageService->findMessages($user->getId());
 </div>
 
 <?php require_once('includes/document-end.php'); ?>
+<?php $db->close(); ?>

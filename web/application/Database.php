@@ -7,7 +7,7 @@ class Database
 {
     protected $database;
     protected $host;
-    protected $mysqli;
+    public $mysqli;
     protected $password;
     protected $result;
     protected $user;
@@ -42,5 +42,12 @@ class Database
         $this->connect();
         $this->result = $this->mysqli->query($query);
         return $this->result;
+    }
+
+    function close()
+    {
+        if ($this->mysqli != null) {
+            $this->mysqli->close();
+        }
     }
 }

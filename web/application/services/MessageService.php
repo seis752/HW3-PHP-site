@@ -11,7 +11,7 @@ class MessageService {
 
     public function postMessage($userId, $message, $posterId)
     {
-        $query = sprintf("INSERT INTO `message` (`user_id`, `message`, `created_by`, `created_when`) VALUES (%d, '%s', %d, now());", $userId, mysql_real_escape_string($message), $posterId);
+        $query = sprintf("INSERT INTO `message` (`user_id`, `message`, `created_by`, `created_when`) VALUES (%d, '%s', %d, now());", $userId, $this->db->mysqli->real_escape_string($message), $posterId);
 
         $result = $this->db->query($query);
 
