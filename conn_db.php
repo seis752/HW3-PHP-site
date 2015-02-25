@@ -1,0 +1,9 @@
+
+<?php 
+$link = mysql_connect('qhwebstationcom.domaincommysql.com', 'qhwebstation', '*password*'); 
+if (!$link) { 
+    die('Could not connect: ' . mysql_error()); 
+} 
+echo 'Connected successfully'; 
+mysql_select_db(seis752_db); 
+?> 
