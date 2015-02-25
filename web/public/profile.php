@@ -90,7 +90,11 @@ $messages = $messageService->findMessages($user->getId());
                     <?php foreach ($messages as $message) : ?>
                         <div class="message">
                             <div><?php echo $message->getContent(); ?></div>
-                            <div class="message-signature"><a href="profile.php?uid=<?php echo $message->getPosterId(); ?>"><?php echo $message->getPosterDisplayName(); ?></a></div>
+                            <div class="message-signature">
+                                <a href="profile.php?uid=<?php echo $message->getPosterId(); ?>"><?php echo $message->getPosterDisplayName(); ?></a>
+                                <span>|</span>
+                                <span><?php echo $message->getDisplayCreatedWhen(); ?></span>
+                            </div>
                         </div>
                     <?php endforeach ?>
                 </div>

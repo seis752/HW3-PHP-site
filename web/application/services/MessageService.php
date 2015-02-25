@@ -23,7 +23,7 @@ class MessageService {
     {
         $messages = [];
 
-        $query = sprintf("SELECT m.id, m.user_id, m.message, m.created_by, u.display_name
+        $query = sprintf("SELECT m.id, m.user_id, m.message, m.created_by, u.display_name, m.created_when
             FROM message m
             INNER JOIN user u ON u.id = m.created_by
             WHERE m.user_id = %d", $userId);
