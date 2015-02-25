@@ -1,6 +1,6 @@
 <?php
 
-require_once('../application/bootstrap.php');
+require_once('application/bootstrap.php');
 
 $userService = new UserService(new Database());
 
