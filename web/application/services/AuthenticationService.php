@@ -18,7 +18,6 @@ class AuthenticationService
 
         $result = $this->db->query($query);
 
-//        $row = $result->fetch_array(MYSQLI_ASSOC);
         $row = $result->fetch_assoc();
 
         if (null != $row) {
