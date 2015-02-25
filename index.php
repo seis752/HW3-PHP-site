@@ -1,17 +1,22 @@
+﻿
 <!DOCTYPE html>
+
+<html>
 <head>
-	<title>Simple Form</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 </head>
 
 <body>
 <h1>SEIS752 Advanced Web Application Development<br />
   Simple Forms
 </h1>
-<form action="/x/y/z" method="POST"> 
-    Value1: <input type="text" name="value1"/><br /> 
-    Value2: <input type="text" name="value2" value="47"/><br /> 
+<form action="login.php" method="POST"> 
+    Username: <input type="text" name="username"/><br /> 
+    Password: <input type="text" name="password" /><br /> 
     <input type="submit" value="Submit"/> 
-</form> 
+    
+ </form> 
+ 
+ </body>
 
-</body>
 </html>
