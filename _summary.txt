@@ -1,1 +1,11 @@
-* The PHP/MYSQL stack was by far very frustrating without using a framework. Identifying the database model wasn’t difficult but extracting the data from the tables in a clean data structure and displaying 
+* The PHP/MYSQL stack was by far very frustrating without using a framework. 
+Identifying the database model wasnâ€™t difficult but extracting the data from the 
+tables in a clean data structure and displaying them without violating software engineering principles was.
+
+The biggest issue for me was the PHP language being syntactically inconveniant and hard to read in comparison to other C 
+based languages. The cost to development time was far greater than expected as setting up the MAMP/WAMP server
+required prior experience on my part otherwise it would have been tedious. The apache server does not serve files
+directly without placing them in the correct location which isn't apparent immediately. The speed of rapid development between
+UI, database and services made it difficult to accomplish all the tasks.
+
+The benefit however is that PHP gives developers the ability to start backend dev work immediately with the ```<?php``` keyword
