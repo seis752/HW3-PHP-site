@@ -1,0 +1,1 @@
+* The PHP/MYSQL stack was by far very frustrating without using a framework. Identifying the database model wasn’t difficult but extracting the data from the tables in a clean data structure and displaying 
