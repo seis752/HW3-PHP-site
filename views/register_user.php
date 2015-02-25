@@ -1,5 +1,21 @@
+<?php
+// show potential errors / feedback (from registration object)
+if (isset($registration)) {
+    if ($registration->errors) {
+        foreach ($registration->errors as $error) {
+            echo $error;
+        }
+    }
+    if ($registration->messages) {
+        foreach ($registration->messages as $message) {
+            echo $message;
+        }
+    }
+}
+?>
+
 <!-- register form -->
-<form method="post" action="register_user.php" name="registerform">
+<form method="post" action="register.php" name="registerform">
 
     <!-- the user name input field uses a HTML5 pattern check -->
     <label for="login_input_username">Username (only letters and numbers, 2 to 64 characters)</label>
