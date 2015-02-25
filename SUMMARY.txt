@@ -1,0 +1,11 @@
+SUMMARY.txt
+
+"...summarizing your experience using PHP and MySql."
+
+=====
+An analysis of the Cost/Speed/Quality of PHP and MySql
+=====
+
+=====
+Your thoughts of the environment. Include a sentence on your previous experience. Include challenges and benefits you see in the environment.
+=====
