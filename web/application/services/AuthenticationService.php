@@ -13,8 +13,10 @@ class AuthenticationService
     {
         $user = null;
 
-        $query = sprintf("SELECT * FROM user WHERE username = '%s' AND password = '%s'",
-            $username, $password);
+//        $query = sprintf("SELECT * FROM user WHERE username = '%s' AND password = '%s'",
+//            $username, crypt($password));
+        $query = sprintf("SELECT * FROM user WHERE username = '%s'",
+            $username);
 
         $result = $this->db->query($query);
 
@@ -26,10 +28,12 @@ class AuthenticationService
 
         if (null != $user)
         {
-            $_SESSION['isAuthenticated'] = true;
-            $_SESSION['userId'] = $user->getId();
-            $_SESSION['username'] = $user->getUsername();
-            return true;
+            if (crypt($password, $row['password']) == $row['password']) {
+                $_SESSION['isAuthenticated'] = true;
+                $_SESSION['userId'] = $user->getId();
+                $_SESSION['username'] = $user->getUsername();
+                return true;
+            }
         }
 
         return false;

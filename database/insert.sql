@@ -11,13 +11,13 @@ INSERT INTO `user`
 `password`,
 `display_name`)
 VALUES
-(1,'user1','password','A'),
-(2,'user2','password','B'),
-(3,'user3','password','C'),
-(4,'user4','password','D'),
-(5,'user5','password','E'),
-(6,'user6','password','F'),
-(7,'user7','password','G');
+(1,'user1','$1$Yh0.B50.$JaoTIafemHYbEr65N9HhZ0','A'),
+(2,'user2','$1$Yh0.B50.$JaoTIafemHYbEr65N9HhZ0','B'),
+(3,'user3','$1$Yh0.B50.$JaoTIafemHYbEr65N9HhZ0','C'),
+(4,'user4','$1$Yh0.B50.$JaoTIafemHYbEr65N9HhZ0','D'),
+(5,'user5','$1$Yh0.B50.$JaoTIafemHYbEr65N9HhZ0','E'),
+(6,'user6','$1$Yh0.B50.$JaoTIafemHYbEr65N9HhZ0','F'),
+(7,'user7','$1$Yh0.B50.$JaoTIafemHYbEr65N9HhZ0','G');
 
 -- -----------------------------------------------------
 -- Table `relationship`

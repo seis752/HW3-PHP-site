@@ -141,7 +141,7 @@ class UserService {
         if ($user == null)
         {
             // TODO: Encrypt password!
-            $query = sprintf("INSERT INTO user (username, password, display_name, created_when) VALUES ('%s', '%s', '%s', now())", mysql_real_escape_string($username), mysql_real_escape_string($password), mysql_real_escape_string($displayName));
+            $query = sprintf("INSERT INTO user (username, password, display_name, created_when) VALUES ('%s', '%s', '%s', now())", mysql_real_escape_string($username), crypt($password), mysql_real_escape_string($displayName));
             $result = $this->db->query($query);
 
             return true;
