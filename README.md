@@ -32,7 +32,7 @@ For this assignment, you'll be integrating a mysql database into a social networ
 
 You should ideally get this up and running on your domain that you registered previously.  For the database creation scripts, it would be extremely helpful if you have the choice of naming your db to name it seislloyd… if your name is Lloyd.  If it is Ted you would call it seisted.  If you have a classmate with your first name then you could go with your UST username, or FNameLIniital.  It is important that I can keep them separate running throughout the semester.
 
-For delivery put all your files in a folder called “HW3”.  I will extract this into a folder with your name in it.  Within the folder should be all the files that are needed to create the database, and run the site.
+Within your repo should be all the files that are needed to create the database, and run the site.
 
 For this assignment, you need to implement these two key features in the following ways:
 
