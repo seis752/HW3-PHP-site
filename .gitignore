@@ -47,5 +47,8 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
-# Covers MySQL Workbench
+# MySQL Workbench
 *.mwb.bak
+
+# Private files
+web/application/config.php
