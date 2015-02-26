@@ -1,9 +1,7 @@
-# HW4-PHP-site
+# HW4-PHP-site Plus AJAX
 
 ##SEIS752 – Advanced Web Application Development   
-####Spring 2015
-###Professor 	Lloyd Cledwyn
-###HW #4:  	PHP Up and Running
+####Spring 2015 | Professor 	Lloyd Cledwyn | HW #5:  	PHP Up and Running
 ###Due:		To be discussed Feb 26th
 
 ##Summary
