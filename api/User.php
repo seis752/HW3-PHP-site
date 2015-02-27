@@ -2,7 +2,6 @@
 /**
  * User: Warsame-Bashir
  */
-require_once ('config/MysqliDB.php');
 
 class User {
 
@@ -23,27 +22,23 @@ class User {
      */
     public $messages = array();
 
+
+
+    function __construct() {
+
+    }
+
     /**
      * Gets all users from users table
      */
     public function getAllUsers()
     {
-        // create a database connection
-        $this->db_connection = new MysqliDb (DB_HOST, DB_USER, DB_PASS, DB_NAME);
-        // change character set to utf8 and check it
-        if (!$this->db_connection->set_charset("utf8")) {
-            $this->errors[] = $this->db_connection->error;
-        }
+            $this->db_connection = new DBPDO();
 
-        // if no connection errors (= working database connection)
-        if (!$this->db_connection->connect_errno) {
-            $sql = "SELECT * FROM users";
-            $users = $this->db_connection->get('users');
+            $query = "select * from users;";
+            $users  =$this->db_connection->fetchAll($query);
 
             return $users;
-        }
-        else {
-            $this->errors[] = "Sorry, no database connection.";
-        }
+
     }
 }

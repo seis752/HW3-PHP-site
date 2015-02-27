@@ -6,15 +6,15 @@ require_once("api/User.php");
 
 
 function printUsers () {
-    global $db;
+
     // create the registration object
     $user = new User();
     $users = $user->getAllUsers();
-    if ($db->count == 0) {
+    if (sizeof($users) <= 0) {
         echo "<td align=center colspan=4>No users found</td>";
         return;
     }
-    printf("sfsad");
+
 
     foreach ($users as $u) {
         echo "<tr>
