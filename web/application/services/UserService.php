@@ -60,7 +60,7 @@ class UserService {
     {
         $users = [];
 
-        $query = sprintf("SELECT u2.id, u2.username, u2.display_name
+        $query = sprintf("SELECT u2.id, u2.username, u2.name
             FROM user u1
             INNER JOIN relationship r ON r.user_1_id = u1.id
             INNER JOIN user u2 ON u2.id = r.user_2_id
@@ -134,14 +134,14 @@ class UserService {
         return true;
     }
 
-    public function register($username, $password, $displayName)
+    public function register($username, $password, $name)
     {
         $user = $this->findByUsername($username);
 
         if ($user == null)
         {
             // TODO: Encrypt password!
-            $query = sprintf("INSERT INTO user (username, password, display_name, created_when) VALUES ('%s', '%s', '%s', now())", $this->db->mysqli->real_escape_string($username), crypt($password), $this->db->mysqli->real_escape_string($displayName));
+            $query = sprintf("INSERT INTO user (username, password, name, created_when) VALUES ('%s', '%s', '%s', now())", $this->db->mysqli->real_escape_string($username), crypt($password), $this->db->mysqli->real_escape_string($name));
             $result = $this->db->query($query);
 
             return true;

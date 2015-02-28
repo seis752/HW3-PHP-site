@@ -54,7 +54,7 @@ $users = $userService->findAll();
                 <?php foreach ($users as $user) : ?>
                     <tr>
                         <td>
-                            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
+                            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getName(); ?></a>
                         </td>
                         <td>
                         <?php if ($currentUser->getId() == $user->getId()): ?>

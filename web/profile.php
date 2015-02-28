@@ -54,7 +54,7 @@ $messages = $messageService->findMessages($user->getId());
 
     <div class="row" style="padding: 0 0 20px 0;">
         <div class="col-md-6">
-            <h1 class="page-h1"><?php echo $user->getDisplayName(); ?> : Profile</h1>
+            <h1 class="page-h1"><?php echo $user->getName(); ?> : Profile</h1>
             <?php if ($user->getId() == $currentUser->getId()): ?>
                 <span class="label label-info">You</span>
             <?php elseif ($userService->checkHasFriend($user->getId(), $currentUser->getId())): ?>
@@ -92,7 +92,7 @@ $messages = $messageService->findMessages($user->getId());
                         <div class="message">
                             <div><?php echo $message->getContent(); ?></div>
                             <div class="message-signature">
-                                <a href="profile.php?uid=<?php echo $message->getPosterId(); ?>"><?php echo $message->getPosterDisplayName(); ?></a>
+                                <a href="profile.php?uid=<?php echo $message->getPosterId(); ?>"><?php echo $message->getPosterName(); ?></a>
                                 <span>|</span>
                                 <span><?php echo $message->getDisplayCreatedWhen(); ?></span>
                             </div>
@@ -115,7 +115,7 @@ $messages = $messageService->findMessages($user->getId());
                 <div class="panel-body">
                     <?php foreach ($friends as $user) : ?>
                         <div>
-                            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
+                            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getName(); ?></a>
                         </div>
                     <?php endforeach ?>
                 </div>

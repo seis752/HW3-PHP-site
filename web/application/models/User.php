@@ -4,7 +4,7 @@ class User
 {
     protected $id;
     protected $username;
-    protected $displayName;
+    protected $name;
     protected $friends;
 
     public static function create($array)
@@ -12,7 +12,7 @@ class User
         $user = new User();
         $user->id = $array['id'];
         $user->username = $array['username'];
-        $user->displayName = $array['display_name'];
+        $user->name = $array['name'];
 
         return $user;
     }
@@ -27,9 +27,9 @@ class User
         return $this->username;
     }
 
-    public function getDisplayName()
+    public function getName()
     {
-        return $this->displayName;
+        return $this->name;
     }
 
     public function getFriends()

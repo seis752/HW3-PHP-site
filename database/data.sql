@@ -9,7 +9,7 @@ INSERT INTO `user`
 (`id`,
 `username`,
 `password`,
-`display_name`)
+`name`)
 VALUES
 (1,'user1','$1$Yh0.B50.$JaoTIafemHYbEr65N9HhZ0','AlexanderM'),
 (2,'user2','$1$Yh0.B50.$JaoTIafemHYbEr65N9HhZ0','BeccaE'),

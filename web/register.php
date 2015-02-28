@@ -91,50 +91,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         }
     }
 
-    // display_name
-    if (!isset($_POST['display_name']))
+    // name
+    if (!isset($_POST['name']))
     {
-        $validationResult->addError('display_name', 'Password is required');
+        $validationResult->addError('name', 'Name is required');
     }
     else
     {
         $testCount = 2;
         $testsPassedCount = 0;
 
-        if (ctype_alnum($_POST['display_name']))
+        if (ctype_alnum($_POST['name']))
         {
             $testsPassedCount++;
         }
         else
         {
-            $validationResult->addError('display_name', 'Password must be alphanumeric');
+            $validationResult->addError('name', 'Name must be alphanumeric');
         }
 
-        if (strlen(trim($_POST['display_name'])) >= 1)
+        if (strlen(trim($_POST['name'])) >= 1)
         {
             $testsPassedCount++;
         }
         else
         {
-            $validationResult->addError('display_name', 'Display Name is required');
+            $validationResult->addError('name', 'Name is required');
         }
 
         if ($testsPassedCount == $testCount)
         {
-            $clean['display_name'] = $_POST['display_name'];
+            $clean['name'] = $_POST['name'];
         }
     }
 
     if (isset($clean['username']) &&
         isset($clean['password']) &&
-        isset($clean['display_name']))
+        isset($clean['name']))
     {
         $validationResult->setIsValid(true);
     }
 
     if ($validationResult->getIsValid())
     {
-        if ($userService->register($clean['username'], $clean['password'], $clean['display_name']))
+        if ($userService->register($clean['username'], $clean['password'], $clean['name']))
         {
             if ($authenticationService->authenticate($clean['username'], $clean['password']))
             {
@@ -184,11 +184,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                             <?php endif; ?>
                         </div>
                         <div class="form-row">
-                            <label for="display-name">Display Name</label><br/>
-                            <input id="display-name" name="display_name" type="text" maxlength="50" />
-                            <?php if (isset($validationResult) && $validationResult->hasError('display_name')): ?>
+                            <label for="name">Name</label><br/>
+                            <input id="name" name="name" type="text" maxlength="50" />
+                            <?php if (isset($validationResult) && $validationResult->hasError('name')): ?>
                                 <div class="validation-error-message">
-                                    <?php echo $validationResult->getErrorMessage('display_name'); ?>
+                                    <?php echo $validationResult->getErrorMessage('name'); ?>
                                 </div>
                             <?php endif; ?>
                         </div>

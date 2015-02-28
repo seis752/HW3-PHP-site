@@ -6,7 +6,7 @@ class Message
     protected $userId;
     protected $content;
     protected $posterId;
-    protected $posterDisplayName;
+    protected $posterName;
     protected $createdWhen;
 
     public static function create($array)
@@ -16,7 +16,7 @@ class Message
         $message->userId = $array['user_id'];
         $message->content = $array['message'];
         $message->posterId = $array['created_by'];
-        $message->posterDisplayName = $array['display_name'];
+        $message->posterName = $array['name'];
         $message->createdWhen = $array['created_when'];
 
         return $message;
@@ -42,9 +42,9 @@ class Message
         return $this->posterId;
     }
 
-    public function getPosterDisplayName()
+    public function getPosterName()
     {
-        return $this->posterDisplayName;
+        return $this->posterName;
     }
 
     public function getCreatedWhen()

@@ -32,7 +32,7 @@ $friends = $userService->findFriends($currentUser->getId());
 
     <div class="row" style="padding: 0 0 20px 0;">
         <div class="col-md-6">
-            <h1 class="page-h1"><?php echo $currentUser->getDisplayName(); ?> : Friends</h1>
+            <h1 class="page-h1"><?php echo $currentUser->getName(); ?> : Friends</h1>
         </div>
     </div>
 
@@ -49,7 +49,7 @@ $friends = $userService->findFriends($currentUser->getId());
                 <?php foreach ($friends as $user) : ?>
                     <tr>
                         <td>
-                            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getDisplayName(); ?></a>
+                            <a href="profile.php?uid=<?php echo $user->getId(); ?>"><?php echo $user->getName(); ?></a>
                         </td>
                         <td>
                             <a href="friends.php?fid=<?php echo $user->getId(); ?>">Remove</a>
