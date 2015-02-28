@@ -14,6 +14,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="profile.php">Profile</a></li>
                 <li><a href="users.php">Users</a></li>
+                <li><a href="_search.php">Search</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
             <?php else: ?>
