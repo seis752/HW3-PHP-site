@@ -150,4 +150,19 @@ class UserService {
         return false;
     }
 
+    public function search($name)
+    {
+        $users = [];
+
+        $query = "SELECT * FROM user where name like '%$name%' limit 20";
+        $result = $this->db->query($query);
+
+        while ($row = $result->fetch_assoc())
+        {
+            array_push($users, User::create($row));
+        }
+
+        return $users;
+    }
+
 }
