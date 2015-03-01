@@ -30,7 +30,7 @@ $users = $userService->search($_GET['name']);
     <div class="row">
         <div class="col-md-6">
 
-            <ol>
+            <ol id="search-results-list">
                 <?php foreach ($users as $user): ?>
                     <li><?php echo sprintf("%s - %s", $user->getName(), $user->getUsername()); ?></li>
                 <?php endforeach; ?>

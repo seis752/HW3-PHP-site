@@ -15,6 +15,8 @@
                 <li><a href="profile.php">Profile</a></li>
                 <li><a href="users.php">Users</a></li>
                 <li><a href="search.php">Search</a></li>
+                <li><a href="search-ajax-1.php">Search (Ajax 1)</a></li>
+                <li><a href="search-ajax-2.php">Search (Ajax 2)</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
             <?php else: ?>
