@@ -20,7 +20,7 @@ AuthenticationService::check();
     <div class="row" style="padding: 0 0 20px 0;">
         <div class="col-md-6">
             <h1 class="page-h1">Search</h1>
-            <p>This search uses Ajax, using an XMLHttpRequest object directly.</p>
+            <p>This search uses Ajax, using jQuery.</p>
         </div>
     </div>
 
@@ -48,6 +48,7 @@ AuthenticationService::check();
     </div>
 </div>
 
-<script type="text/javascript" src="js/search-ajax-1.js"></script>
+<script type="text/javascript" src="vendor/jquery/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/search-ajax-2.js"></script>
 <?php require_once('includes/document-end.php'); ?>
 <?php $db->close(); ?>

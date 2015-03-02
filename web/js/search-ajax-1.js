@@ -1,4 +1,5 @@
 // search-ajax-1.js
+// Search functionality using XMLHttpRequest object directly.
 
 var search = {
 

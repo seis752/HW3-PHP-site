@@ -20,6 +20,7 @@ AuthenticationService::check();
     <div class="row" style="padding: 0 0 20px 0;">
         <div class="col-md-6">
             <h1 class="page-h1">Search</h1>
+            <p>This search uses full-page refresh.</p>
         </div>
     </div>
 
