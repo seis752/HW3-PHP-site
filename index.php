@@ -1,9 +1,7 @@
 <?php
 // include the database connection details
 include 'core/init.php';
-require_once("config/database.php");
-include_once('config/class.MySQL.php');
-include_once('config/class.DBPDO.php');
+
 include 'views/common/header.php';
 
 

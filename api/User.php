@@ -33,6 +33,7 @@ class User {
      */
     public function getAllUsers()
     {
+
             $this->db_connection = new DBPDO();
 
             $query = "select * from users;";

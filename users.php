@@ -32,7 +32,7 @@ function printUsers () {
 }
 ?>
 
-<table width='50%'>
+<table width='50%' class="table table-hover">
     <tr bgcolor='#cccccc'>
         <th>User Id</th>
         <th>User Name</th>
