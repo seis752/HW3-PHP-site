@@ -1,5 +1,7 @@
-<?php
 
+<?php
+include 'core/init.php';
+include 'views/common/header.php';
 
 require_once("api/User.php");
 
@@ -40,3 +42,5 @@ function printUsers () {
     <?php printUsers();?>
 
 </table>
+<?php include 'views/common/footer.php'?>
+
