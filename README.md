@@ -1,9 +1,8 @@
 # HW4-PHP-site
 
 ##Submission Notes
-* The hosted website is available for review here: http://justinmcdowell.com/hw4/
+* The hosted website is available for review here: http://justinmcdowell.com/hw5/
 * `create-database.sql` (located in the `database/`) contains the SQL commands for creating the database structure and inserting sample data. *NOTE: `create-database.sql` contains commands for dropping and creating the schema, in addition to the commands for creating tables and inserting sample data.*
-* `SUMMARY.txt` is the write-up addressing the response questions.
 
 ##Repository Layout
 Description of the key directories and files:
@@ -18,7 +17,6 @@ Description of the key directories and files:
 * `web/` - Contains the website files for deployment—the "web root" directory.
     * `application/`
         * `config.php-template` - Rename to `config.php` and update with database access credentials.
-* `SUMMARY.txt` - The written submission for the assignment.
 
 ##Demo
-`create-database.sql` inserts seven demo user records (usernames: "user1", "user2", "user3", etc.), all having password: "password".
+`create-database.sql` inserts the 7 user records there were included in HW4 (usernames: "user1", "user2", "user3", etc.; all having password: "password") and the 2000 user records provided for HW5 (password: "abc123").
