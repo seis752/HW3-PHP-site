@@ -1,15 +1,15 @@
 <?php
-include("conn_db.php");
+include("config.php");
 session_start();
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 // username and password sent from Form
-$myusername=mysqli_real_escape_string($link,$_POST['username']); 
-$mypassword=mysqli_real_escape_string($link,$_POST['password']); 
+$myusername=mysqli_real_escape_string($db,$_POST['username']); 
+$mypassword=mysqli_real_escape_string($db,$_POST['password']); 
 
 
 $sql="SELECT id FROM users WHERE username='$myusername' and password='$mypassword'";
-$result=mysqli_query($link,$sql);
+$result=mysqli_query($db,$sql);
 $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 $active=$row['active'];
 $count=mysqli_num_rows($result);
@@ -18,14 +18,13 @@ $count=mysqli_num_rows($result);
 // If result matched $myusername and $mypassword, table row must be 1 row
 if($count==1)
 {
-session_register("myusername");
 $_SESSION['login_user']=$myusername;
 
 header("location: loginaccount.php");
 }
 else 
 {
-$error="Your Login Name or Password is invalid";
+echo "Your Login Name or Password is invalid";
 }
 }
 ?>
@@ -33,7 +32,11 @@ $error="Your Login Name or Password is invalid";
 <!DOCTYPE HTML>
 <html>
 <head>
+	<link rel="shortcut icon" href="faviorico_qh.ico" type="image/x-icon">
+	<link rel="icon" href="faviorico_qh.ico" type="image/x-icon">
+	
 	<title>Login</title>
+
 <style type="text/css">
 input:required {
 	border: 1px solid red;
@@ -115,14 +118,14 @@ label{
 <body>
 
 <section class = "loginform cf">
-<form action="loginaccount.php" method="post">
+<form action="" method="post">
 	<ul>
 		<li>
-			<label for="username">Username</label>
+			<label>Username</label>
 			<input type="username" name="username" placeholder="username" required>
 		</li>
 		<li>
-			<label for="password">Password</label>
+			<label>Password</label>
 			<input type="password" name="password" placeholder="password" required>
 		</li>
 		<li>
