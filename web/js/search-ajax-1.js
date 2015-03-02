@@ -18,44 +18,62 @@ var search = {
   handleSearch: function () {
     var name = document.getElementById('name').value;
     var url = search.searchResultsUrl + '?name=' + name;
-    var request = new XMLHttpRequest();
+    var request = search.createXMLHttpRequest();
 
-    // Use "document" response type, so we can find elements in DOM later.
-    request.responseType = 'document';
+    if (request != null) {
+      // Use "document" response type, so we can find elements in DOM later.
+      request.responseType = 'document';
 
-    request.onreadystatechange = function () {
-      switch (request.readyState) {
-        case 0:
-          //console.log('0: UNSENT');
-          break;
-        case 1:
-          //console.log('1: OPENED');
-          break;
-        case 2:
-          //console.log('2: HEADERS_RECEIVED');
-          break;
-        case 3:
-          //console.log('3: LOADING');
-          break;
-        case 4:
-          //console.log('4: DONE');
+      request.onreadystatechange = function () {
+        switch (request.readyState) {
+          case 0: // UNSENT
+            break;
+          case 1: // OPENED
+            break;
+          case 2: // HEADERS_RECEIVED
+            break;
+          case 3: // LOADING
+            break;
+          case 4: // DONE
+            if (request.status == 200) {
+              search.searchResultsListHtml =
+                request.response.getElementById('search-results-list').outerHTML;
 
-          if (request.status == 200) {
-            search.searchResultsListHtml =
-              request.response.getElementById('search-results-list').outerHTML;
+              search.updateUiSearchResults();
+            } else {
+              console.log('ERROR');
+              console.log(request.response);
+            }
 
-            search.updateUiSearchResults();
-          } else {
-            console.log('ERROR');
-            console.log(request.response);
-          }
+            break;
+        }
+      };
 
-          break;
+      request.open('GET', url, true);
+      request.send(null);
+    }
+  },
+
+  // Supports multiple ways for creating an XMLHttpRequest object.
+  // REF: "Lecture05 - SEIS752 - Version Control & AJAX.pptx"
+  createXMLHttpRequest: function () {
+    var request = null;
+
+    try {
+      request = new XMLHttpRequest();
+    } catch (ex1) {
+      try {
+        request = new ActiveXObject('Microsoft.XMLHTTP');
+      } catch (ex2) {
+        try {
+          request = new ActiveXObject('Msxml2.XMLHTTP');
+        } catch (ex3) {
+          // Give up, return "null" request.
+        }
       }
-    };
+    }
 
-    request.open('GET', url, true);
-    request.send(null);
+    return request;
   },
 
   updateUiSearchResults: function () {
