@@ -74,6 +74,7 @@ class Registration {
                 $user_name = $this->db_connection->real_escape_string(strip_tags($_POST['user_name'], ENT_QUOTES));
                 $user_email = $this->db_connection->real_escape_string(strip_tags($_POST['user_email'], ENT_QUOTES));
                 $user_password = $_POST['user_password_new'];
+				$user_display = $_POST['user_display'];
 
                 // PHP 5.3/5.4, by the password hashing compatibility library
                 $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
@@ -84,12 +85,13 @@ class Registration {
                     $this->errors[] = "Sorry, that username / email address is already taken.";
                 } else {
                     // write new user's data into database
-                    $sql = "INSERT INTO users (user_name, user_password_hash, user_email)
-                            VALUES('" . $user_name . "', '" . $user_password_hash . "', '" . $user_email . "');";
+                    $sql = "INSERT INTO users (user_name, user_password_hash, display_name, user_email)
+                            VALUES('" . $user_name . "', '" . $user_password_hash . "' , '" . $user_display . "' , '" . $user_email . "');";
                     $query_new_user_insert = $this->db_connection->query($sql);
                     // if user has been added successfully
                     if ($query_new_user_insert) {
                         $this->messages[] = "Your account has been created successfully. You can now log in.";
+						header("Location: index.php");
                     } else {
                         $this->errors[] = "Sorry, your registration failed. Please go back and try again.";
                     }

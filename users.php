@@ -17,27 +17,42 @@ function printUsers () {
         return;
     }
 
-
+	$currentId = $_SESSION['user_id'];
     foreach ($users as $u) {
         echo "<tr>
             <td>{$u['user_id']}</td>
             <td>{$u['user_name']}</td>
-            <td>{$u['user_email']} {$u['lastName']}</td>
-            <td>
-                <a href='index.php?action=rm&id={$u['id']}'>rm</a> ::
-                <a href='index.php?action=mod&id={$u['id']}'>ed</a>
+            <td>{$u['user_email']}</td>
+            <td>{$u['display_name']}</td>
+            <td>{$u['display_name']}</td>
+            
+        ";
+		// Can't delete your self
+		if ( $currentId != $u['user_id']){
+			echo "<td>
+				
+                <a href='index.php?action=deleteUser&id={$u['user_id']}'>Delete</a>
+               
             </td>
-        </tr>";
+			
+			<td>
+				
+                <a href='index.php?action=deleteUser&id={$u['user_id']}'>Add Friend</a>
+               
+            </td>";
+		}
+		echo "</tr>";
     }
 }
 ?>
 
-<table width='50%' class="table table-hover">
-    <tr bgcolor='#cccccc'>
+<table width='50%' class="table ">
+    <tr >
         <th>User Id</th>
         <th>User Name</th>
         <th>Email</th>
         <th>Display Name</th>
+        
     </tr>
     <?php printUsers();?>
 
