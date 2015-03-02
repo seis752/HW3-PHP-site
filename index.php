@@ -1,25 +1,29 @@
-<!-- DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" -->
-<!DOCTYPE  HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<?php ini_set('display_errors', 'on'); error_reporting(-1); ?>
+<!DOCTYPE html>
 <head>
 	<title>Simple Form</title>
         <link href="tabA.css" rel="stylesheet" type="text/css"/>
-      <!--   <link  href="./scripts/JohnsStyleSheet.css"  rel="stylesheet" type="text/css"/> -->
 </head>
-// this form is associated with welcome.php
+ this form is the index page and it is where users land when 
+ they connect to the site. 
+ Clicking SUBMIT button takes the user to the Welcome page
+ 
 <body>
+    <h3> navigation links </h3>
   <ul class="tabs" data-tab>
-    <li class="tab-title active"><a href="#">Tab Index</a></li>
-    <li class="tab-title"><a href="welcome.php">Tab Welcome</a></li>
+    <li class="tab-title active"><a href="#">Tab IndexPage</a></li>
+    <li class="tab-title"><a href="welcome.php">Tab WelcomePage</a></li>
     <li class="tab-title"><a href="profilePage.php">Tab ProfilePage</a></li>
 </ul>
-    
+<br>   
 <h1>SEIS752 Advanced Web Application Development<br />
-  Login Form 
+  Login Form <br/>
+  Enter a valid email address for your user ID
 </h1>
-<form action="welcome.php" method="POST"> 
+<form action="welcome.php" method="POST">  <!-- identifies target page for SUBMIT -->
     Name: <input type="text" name="name"/><br /> 
-    Passsword: <input type="text" name="password" /><br /> 
+    E-mail: <input type="text" name="email"><br>
+    Password: <input type="text" name="password" /><br /> 
     <input type="submit" value="Submit"/> 
 </form> 
 
