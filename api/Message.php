@@ -41,4 +41,12 @@ class Message {
         $this->db_connection->execute(
             "insert into messages (username, message) values ('$friend', '$message')");
     }
+
+    /**
+     * See of Message of Friends
+     */
+    public function seeMessagesofFriends(){
+        $this->db_connection = new DBPDO();
+
+    }
 }

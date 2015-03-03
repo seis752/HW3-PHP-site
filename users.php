@@ -5,6 +5,23 @@ include 'views/common/header.php';
 
 require_once("api/User.php");
 
+$action=$_GET['action'];
+$id=$_GET['id'];
+
+if($action === "addFriend"){
+    // add friend
+    $user = new User();
+    $user->addFriend($id);
+    redirect("users.php");
+}
+
+if($action === "deleteFriend"){
+    // delete friend
+    $user = new User();
+    $user->deleteFriend($id);
+    redirect("users.php");
+
+}
 
 
 function printUsers () {
@@ -27,17 +44,18 @@ function printUsers () {
             <td>{$u['display_name']}</td>
             
         ";
-		// Can't delete your self
+		// Can't delete or add your self
 		if ( $currentId != $u['user_id']){
+
 			echo "<td>
 				
-                <a href='index.php?action=deleteUser&id={$u['user_id']}'>Delete</a>
-               
+                <a href='users.php?action=deleteFriend&id={$u['user_name']}' class='btn btn-danger'>
+                Delete Friend</a>
             </td>
 			
 			<td>
 				
-                <a href='index.php?action=deleteUser&id={$u['user_id']}'>Add Friend</a>
+                <a href='users.php?action=addFriend&id={$u['user_name']}' class='btn btn-success'>Add Friend</a>
                
             </td>";
 		}
@@ -45,17 +63,48 @@ function printUsers () {
     }
 }
 ?>
+<section class="users-list">
+    <hr>
+    <h3>All Users</h3>
+    <br>
+    <table width='50%' class="table ">
+        <tr >
+            <th>User Id</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Display Name</th>
 
-<table width='50%' class="table ">
-    <tr >
-        <th>User Id</th>
-        <th>User Name</th>
-        <th>Email</th>
-        <th>Display Name</th>
-        
-    </tr>
-    <?php printUsers();?>
+        </tr>
+        <?php printUsers();?>
 
-</table>
+    </table>
+
+</section>
+
+<section class="friends-holder">
+    <hr>
+    <h3>Friends</h3>
+    <br>
+    <ul class="friends-list col-md-4">
+        <?php
+        $userInst = new User();
+        $friends = $userInst->getFriends();
+        foreach($friends as $f) { ?> <!-- We start our foreach loop. -->
+            <li>
+                <div class="friend-content">
+                    <h4>
+                    <span>
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
+                        &nbsp;
+                        <?php echo $f['friend']; ?>
+                    </h4>
+                    <a class="btn btn-primary" href='messages.php?action=seeMessages={<?php $f['user_name']?>'> See Messages</a>
+                </div>
+
+            </li>
+        <?php } ?> <!-- We end our foreach loop.
+    </ul>
+</section>
 <?php include 'views/common/footer.php'?>
 

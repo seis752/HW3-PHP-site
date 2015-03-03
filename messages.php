@@ -6,6 +6,15 @@ require_once("api/User.php");
 $userInstance = new User();
 $friends = $userInstance->getFriends();
 
+$action=$_GET['action'];
+$id=$_GET['id'];
+
+if($action === "seeMessages"){
+    // add friend
+    $message = new Message();
+    $message->seeMessagesofFriends($id);
+}
+
 ?>
 
 

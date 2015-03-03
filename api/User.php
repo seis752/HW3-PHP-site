@@ -22,7 +22,7 @@ class User {
      */
     public $messages = array();
 
-
+    public $username = null;
 
     function __construct() {
 
@@ -52,12 +52,36 @@ class User {
         return $friends;
     }
 
+    /**
+     * @param $user_name
+     * @return mixed username property
+     */
     public function getUserName($user_name) {
         $this->db_connection = new DBPDO();
-        print $user_name;
         $query = "select * from users m  WHERE m.user_name = '" . $user_name . "';";
         $user = $this->db_connection->fetch($query);
         return $user['user_name'];
 
+    }
+
+    /**
+     * Add friend
+     */
+    public function addFriend($friend_id){
+        $this->db_connection = new DBPDO();
+        $user_name = $_SESSION["user_name"];
+        $query = "insert into relationships  (username, friend ) values ('$user_name', '$friend_id')";
+        $this->db_connection->execute($query);
+
+    }
+
+    /**
+     * Delete friend
+     */
+    public function deleteFriend($friend_username){
+        $this->db_connection = new DBPDO();
+        $query = "delete from relationships  where friend = '" . $friend_username . "';";
+
+        $this->db_connection->execute($query);
     }
 }

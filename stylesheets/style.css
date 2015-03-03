@@ -56,3 +56,41 @@ ul
 textarea {
     resize: none;
 }
+
+.friends-holder, .users-list{
+    margin-top: 3em;
+
+}
+
+.users-list > table > tr {
+    border: none;
+}
+
+.table > tbody > tr > th{
+    border: none;
+}
+
+.table > tbody > tr > td{
+    border: none;
+}
+
+.friends-list {
+    padding: 3em;
+    display: inline-block;
+
+}
+.friends-list li {
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 3em;
+}
+
+
+.friend-content h4 {
+    float: left;
+    padding: 1em;
+}
+
+.friend-content a {
+    float: right;
+    margin-top: 1.6em;
+}

@@ -1,5 +1,5 @@
 <?php
-
+require_once("helpers.php");
 require_once("config/database.php");
 include_once('config/class.MySQL.php');
 include_once('config/class.DBPDO.php');
