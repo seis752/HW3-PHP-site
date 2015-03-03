@@ -44,9 +44,11 @@ class User {
     /**
      * Gets all friends in relationships table
      */
-    public function getFriends(){
+    public function getFriends($user_name){
         $this->db_connection = new DBPDO();
-        $user_name = $_SESSION["user_name"];
+        if (empty($user_name)) {
+            $user_name = $_SESSION["user_name"];
+        }
         $query = "select * from relationships r  WHERE r.username = '" . $user_name . "';";
         $friends  =$this->db_connection->fetchAll($query);
         return $friends;
@@ -70,8 +72,16 @@ class User {
     public function addFriend($friend_id){
         $this->db_connection = new DBPDO();
         $user_name = $_SESSION["user_name"];
-        $query = "insert into relationships  (username, friend ) values ('$user_name', '$friend_id')";
-        $this->db_connection->execute($query);
+        $check_query = "select * from relationships where friend = '$friend_id'";
+        $results = $this->db_connection->fetchAll($check_query);
+        if(!empty($results)){
+            // freind already exists
+            echo '<h4> Friend Already Exists </h4>';
+        }else{
+            $query = "insert into relationships  (username, friend ) values ('$user_name', '$friend_id')";
+            $this->db_connection->execute($query);
+            redirect("users.php");
+        }
 
     }
 
@@ -81,7 +91,16 @@ class User {
     public function deleteFriend($friend_username){
         $this->db_connection = new DBPDO();
         $query = "delete from relationships  where friend = '" . $friend_username . "';";
+        $check_query = "select * from relationships where friend = '$friend_username'";
+        $results = $this->db_connection->fetchAll($check_query);
+        if(empty($results)){
+            // freind already exists
+            echo '<h4> Cannot delete a none existing friend </h4>';
+        }
+        else{
+            $this->db_connection->execute($query);
+            redirect("users.php");
+        }
 
-        $this->db_connection->execute($query);
     }
 }

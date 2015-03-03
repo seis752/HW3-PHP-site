@@ -12,14 +12,14 @@ if($action === "addFriend"){
     // add friend
     $user = new User();
     $user->addFriend($id);
-    redirect("users.php");
+
 }
 
 if($action === "deleteFriend"){
     // delete friend
     $user = new User();
     $user->deleteFriend($id);
-    redirect("users.php");
+
 
 }
 
@@ -46,18 +46,23 @@ function printUsers () {
         ";
 		// Can't delete or add your self
 		if ( $currentId != $u['user_id']){
+             $friends = $user->getFriends($u['user_name']);
+            foreach($friends as $f){
+                if($u['user_name'] != $f['friend']){
+                    echo "<td>
 
-			echo "<td>
-				
-                <a href='users.php?action=deleteFriend&id={$u['user_name']}' class='btn btn-danger'>
-                Delete Friend</a>
-            </td>
-			
-			<td>
-				
-                <a href='users.php?action=addFriend&id={$u['user_name']}' class='btn btn-success'>Add Friend</a>
-               
-            </td>";
+                    <a href='users.php?action=deleteFriend&id={$u['user_name']}' class='btn btn-danger'>
+                        Delete Friend</a>
+                    </td>
+
+                    <td>
+
+                        <a href='users.php?action=addFriend&id={$u['user_name']}' class='btn btn-success'>Add Friend</a>
+
+                    </td>";
+                }
+            }
+
 		}
 		echo "</tr>";
     }

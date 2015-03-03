@@ -4,7 +4,7 @@ include 'views/common/header.php';
 require_once("api/Message.php");
 require_once("api/User.php");
 $userInstance = new User();
-$friends = $userInstance->getFriends();
+$friends = $userInstance->getFriends(null);
 
 $action=$_GET['action'];
 $id=$_GET['id'];
