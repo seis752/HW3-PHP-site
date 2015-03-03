@@ -1,0 +1,58 @@
+
+
+ul
+{
+    list-style-type: none;
+
+}
+
+
+
+.text-center {
+    text-align: center;
+}
+.min-spacing {
+    margin-bottom: 1em;
+}
+.messages-list li {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 1em;
+    margin-bottom: 2em;
+}
+.messages-list {
+    margin-top: 1em;
+}
+.messages-list li > h4 > span {
+    font-weight: bold;
+}
+.center-it {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.custom-btn{
+    width: 100px;
+    color: #fff !important;
+    padding: 5px 0px;
+    font-size: 14px;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+.btn-primary {
+    background-color: #55c38e;
+    border-color: #42bc81;
+}
+#collapseExample{
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+textarea {
+    resize: none;
+}

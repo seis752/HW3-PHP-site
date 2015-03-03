@@ -3,7 +3,7 @@
 </div>
 </div>
 <div class="footer">
-    <p>&copy; Company 2013</p>
+    <p></p>
 </div>
 </body>
 </html>
