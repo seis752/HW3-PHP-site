@@ -1,7 +1,6 @@
 <?php
 // include the database connection details
 include 'core/init.php';
-
 include 'views/common/header.php';
 
 

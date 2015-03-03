@@ -40,6 +40,7 @@ class Message {
         $message = $_SESSION['message'];
         $this->db_connection->execute(
             "insert into messages (username, message) values ('$friend', '$message')");
+        redirect("messages.php");
     }
 
     /**

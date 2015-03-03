@@ -2,6 +2,7 @@
 <?php
 include 'core/init.php';
 include 'views/common/header.php';
+protect_page();
 
 require_once("api/User.php");
 
@@ -93,7 +94,7 @@ function printUsers () {
     <ul class="friends-list col-md-4">
         <?php
         $userInst = new User();
-        $friends = $userInst->getFriends();
+        $friends = $userInst->getFriends(null);
         foreach($friends as $f) { ?> <!-- We start our foreach loop. -->
             <li>
                 <div class="friend-content">
@@ -104,7 +105,7 @@ function printUsers () {
                         &nbsp;
                         <?php echo $f['friend']; ?>
                     </h4>
-                    <a class="btn btn-primary" href='messages.php?action=seeMessages={<?php $f['user_name']?>'> See Messages</a>
+                    <a class="btn btn-primary" href='messages.php'>Send a Message</a>
                 </div>
 
             </li>

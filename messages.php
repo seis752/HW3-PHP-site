@@ -1,5 +1,6 @@
 <?php
 include 'core/init.php';
+protect_page();
 include 'views/common/header.php';
 require_once("api/Message.php");
 require_once("api/User.php");
