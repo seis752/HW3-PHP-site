@@ -42,17 +42,24 @@ function printUsers()
     }
 
     $currentId = $_SESSION['user_id'];
-    foreach ($users as $u) {
-        echo "<tr>
+    $query = $_GET['query'];
+    $results = $user->searchUser($query);
+    if (!empty($query)) {
+        // show search
+        echo $results;
+    } else {
+        //print all users
+        foreach ($users as $u) {
+            echo "<tr>
             <td>{$u['user_id']}</td>
             <td>{$u['user_name']}</td>
             <td>{$u['user_email']}</td>
             <td>{$u['display_name']}</td>
 
         ";
-        // Can't delete or add your self
-        if ($currentId != $u['user_id']) {
-            echo "<td>
+            // Can't delete or add your self
+            if ($currentId != $u['user_id']) {
+                echo "<td>
 
                     <a href='users.php?action=deleteFriend&id={$u['user_name']}' class='btn btn-danger'>
                         Delete Friend</a>
@@ -65,25 +72,23 @@ function printUsers()
                     </td>";
 
 
+            }
+            echo "</tr>";
         }
-        echo "</tr>";
     }
+
 }
 
 ?>
 <section class="search-holder text-center">
     <form action="users.php" method="GET" class="search-form">
-        <input type="text" name="query" class="search-input"/>
-        <input type="submit" value="Search" name="searchUser" class="search-button" />
+        <input type="text" name="query" placeholder="Search by username" class="search-input"/>
+        <input type="submit" value="Search"   class="search-button"/>
     </form>
-    <div class="text-center">
-        <?php $results = $user->searchUser($query);
-                echo $results;?>
-    </div>
+
 </section>
 <section class="users-list">
     <hr>
-    <h3>All Users</h3>
     <br>
     <table width='50%' class="table ">
         <tr>

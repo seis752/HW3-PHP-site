@@ -120,19 +120,23 @@ class User
         $query = "select * from users where user_name LIKE '%" . $query . "%'";
         $results = $this->db_connection->fetchAll($query);
         if (empty($results)) {
-            return '<h4> No Users Found </h4>';
+            return '<h4 style="color: red;float: left;" > No Users Found </h4>';
         } else {
+            $context = null;
             foreach($results as $data){
 
-                    $context = '<table class="table">
-              <tr style="background-color:pink;">
+              $td = '<tr>
+                <td style="font-size:18px;">'.$data["user_id"].'</td>
                 <td style="font-size:18px;">'.$data["user_name"].'</td>
+                <td style="font-size:18px;">'.$data["user_email"].'</td>
                 <td style="font-size:18px;">'.$data["display_name"].'</td>
-              </tr></table>';
-                '';
-                return $context;
+              </tr>';
+
+
+                $context.= $td;
 
             }
+            return $context;
 
         }
     }
