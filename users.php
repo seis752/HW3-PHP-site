@@ -74,7 +74,7 @@ function printUsers()
 <section class="search-holder text-center">
     <form action="users.php" method="GET" class="search-form">
         <input type="text" name="query" class="search-input"/>
-        <input type="submit" value="Search" class="search-button" />
+        <input type="submit" value="Search" name="searchUser" class="search-button" />
     </form>
     <div class="text-center">
         <?php $results = $user->searchUser($query);

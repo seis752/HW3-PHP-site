@@ -85,3 +85,21 @@ INSERT INTO messages(username_from, username_to, message) VALUES
   ('warz', 'clinton', 'A test message for you'),
   ('abdi1', 'fifty', 'A test message for you'),
   ('yuma', 'haha', 'A test message for you');
+
+--
+-- Table Definition for table `users`
+--
+
+
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint(16) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `username` varchar(80) DEFAULT NULL,
+  `password` varchar(60) NOT NULL,
+  `lat` decimal(10,6) DEFAULT NULL,
+  `lon` decimal(10,6) DEFAULT NULL,
+  `profile_img_url` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2001 ;
+

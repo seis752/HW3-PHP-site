@@ -1,4 +1,8 @@
 <?php
+// create/read session
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 // Helper function that redirects you to an URL
 function redirect($url)

@@ -135,6 +135,16 @@ class User
             }
 
         }
+    }
 
+    /**
+     * @param $query
+     * Search and encode with JSON
+     */
+    public function searchUserAJAX($query){
+        $this->db_connection = new DBPDO();
+        $query = "select * from users where user_name LIKE '%" . $query . "%'";
+        $results = $this->db_connection->fetchAll($query);
+        echo json_encode($results);
     }
 }

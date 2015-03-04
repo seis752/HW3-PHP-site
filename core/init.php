@@ -1,8 +1,7 @@
 <?php
 require_once("helpers.php");
 require_once("config/database.php");
-include_once('config/class.MySQL.php');
-include_once('config/class.DBPDO.php');
+require_once('config/class.DBPDO.php');
 // login class with initializer immediately called
 require_once("api/Login.php");
 
