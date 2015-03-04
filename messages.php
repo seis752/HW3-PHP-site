@@ -76,7 +76,7 @@ if($action === "seeMessages"){
                     <?php echo $m['date']; ?>
                     -
                     <span>
-                         <?php echo $m['username']; ?>
+                         <?php echo $m['username_from']; ?>
                     </span>
 
                 </h4>

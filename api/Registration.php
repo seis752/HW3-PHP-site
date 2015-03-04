@@ -77,7 +77,8 @@ class Registration {
 				$user_display = $_POST['user_display'];
 
                 // PHP 5.3/5.4, by the password hashing compatibility library
-                $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
+//                $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
+                $user_password_hash = $user_password;
                 // check if user or email address already exists
                 $sql = "SELECT * FROM users WHERE user_name = '" . $user_name . "' OR user_email = '" . $user_email . "';";
                 $query_check_user_name = $this->db_connection->query($sql);
