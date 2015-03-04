@@ -1,0 +1,30 @@
+This week's comments:
+
+I have coded all the key parts for HW4 but I am still testing it.
+
+I discovered some flaws in my overall design. So I had to backtrack and make major changes to somes pages such as how I checked login
+and where I did that. Also, I was trying to use cookies where I should have used sessions. After redesigning the php pages, I
+was able to resume testing my code this week. But other issues have slowed me down.
+
+I am finding a lot of syntax errors. Also, I can't seem to get XAMPP to work correctly. It seems to be detecting old files.
+
+In addition, I have spent a lot of time on connection issues. I have had only a limited number of opportunities to test my files 
+on the actual server. I have run into problems trying to connect to the database. I also am having trouble trying to establish a 
+connection to the server from home. None of the workarounds that I found on the web have worked. I have spent alot of time dealing 
+with my ISP support back and forth. They are saying that the issue is on the server end. But I am suspicious since I can connect when
+I'm at school. 
+
+Last week's comments:
+
+I estimate that I spent somewhere around 11-12 hours on this project. About 2-3 hrs were spent with setup issues related to Dreamhost, the database and 
+the like. The rest was on programming/coding. I was able to write code for most of the funcitionality you asked for. But I did not have time to work on
+sorting the messages by friends. I was struggling with how to develop that function. I was able to build code for most functions and items but ran out of
+time to even test out any code. 
+
+My biggest problem was simply the volume of items and features and the time it took to plan them out (design) as well as trying to code it. I did spend some time
+thinking about the database structure and how best to set up the fields with each table. I could have used a different primary key such as friendname or username
+for relationships instead of a relationshipid (integer). Jumping back and forth between SQL, PHP and HTML did slow me down somewhat making sure I didn't mix them
+up or place the code in wrong location. And then I had separated a couple of functions out into separtate files including login.php and navbar.php which added 
+to the number of files to manage. Handling mutiple queries and then setting up the logic to perform functions like remove and add friend took some time. I think
+the handoff of data from the form to the database is always a bit challenging. The syntax trips me up fairly often when missing a needed bracket, semicolon or 
+quotations.

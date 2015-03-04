@@ -1,17 +1,46 @@
 <!DOCTYPE html>
+<?php 
+include login.php
+include checklogin.php
+?> 
 <head>
-	<title>Simple Form</title>
+	<title>Login Page</title>
 </head>
-
 <body>
-<h1>SEIS752 Advanced Web Application Development<br />
-  Simple Forms
-</h1>
-<form action="/x/y/z" method="POST"> 
-    Value1: <input type="text" name="value1"/><br /> 
-    Value2: <input type="text" name="value2" value="47"/><br /> 
-    <input type="submit" value="Submit"/> 
-</form> 
-
+<h1>Login<br /></h1>
+  <div class="grid_1"> &nbsp;</div>
+    <div  class="grid_4">
+        <form id="form2" name="form1" method="post" action="/forms.php">
+          <label>Form with action = POST<br />
+            Username
+            <input name="user" type="text" id="user" value='' />
+          </label>
+          <br />
+          <label>Password
+            <input name="pass" type="text" id="pass" value="" />
+          </label>
+          <p>
+            <label>
+              <input type="checkbox" name="rememberme" value="yes" id="rememberme" />
+              Remember me</label>
+            <br />
+          </p>
+          <p>
+            
+            <label>
+              <input type="submit" name="submit2" id="submit2" value="Submit" />
+            </label>
+            <br />
+          </p>
+        </form>
+   </div> 
+<?php
+if ((isset($_POST['user'])) && (isset($_POST['pass']))) {
+	session_start(); 
+	$_SESSION['user']=$_POST['user'];
+	$_SESSION['password']=$_POST['pass'];
+	$_SESSION['rememberme']=$_POST['rememberme'];
+}
+?>
 </body>
 </html>
