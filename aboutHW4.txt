@@ -1,0 +1,8 @@
+Summary of HW 4
+
+Despite all my next comments about the struggles, I really liked the assignment and how much I have learnt from it.
+I wish we had more guidance with the setup of all the blocks needed to work on this project.
+What I have managed to do: get the user to login, if not logged in - register. Login and remain logged in until logout is chosen.
+Once user is logged in, he gets redirected to profile page, where he sees his messages. User can navigate to All users and Friends.
+I was not able to finish the post message, and add user is not working properly.
+gitignore is "hiding" the db-const.php file
