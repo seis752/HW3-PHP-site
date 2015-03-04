@@ -120,8 +120,8 @@ padding-top:70px;
 }
 .searchform {
 	width: 600px;
-	margin: 55px auto;
-	padding: 97px;
+	margin: 0 auto;
+	padding: 23px;
 	background-color: rgba(243,250,191,0.5);
 	border-radius: 30px;
     box-shadow: 58px 43px 101px 0px rgba(0, 0, 0, 0.2), 
@@ -144,11 +144,11 @@ padding-top:70px;
 	display:inline;
 	float: right;
 	margin-top:0;
-	margin-left:85px;
+	margin-left:7px;
 	margin-bottom:15px;
 }
 .searchform input:not([type=submit]) {
-	padding: 5px;
+	padding: 4px;
 	margin-right: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.3);
 	border-radius: 3px;

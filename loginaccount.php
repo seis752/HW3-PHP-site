@@ -44,8 +44,20 @@ include("viewmsg.php");
 	    </div>
 	</div>
 <div class="main">
+		<section class = "searchform cf">
+			<form action="" method="get">
+			<ul>
+				<li>
+				<label>Search </label>
+				<input id="bar" type="Search" name="search" >
+				<input id="submit" type="submit" value="Submit Using Ajax">
+				<input id="submit" type="submit" value="Submit Using JQuery">
+				</li>
+			</ul>
+			</form>
+		</section>
+		
 	<div class="container">
-	
 	<h3>Hello <?php echo $login_session; ?></h3> 
 	<div class="message">
 		<h3 style="color: gray">Say something special today...</h3>
@@ -87,7 +99,8 @@ include("viewmsg.php");
 			<textarea type="text" name="viewessage"> <?php echo $_SESSION['view_msg'];?> </textarea>
 			</div>
 		</div>
-	
+		
+		
 	</div>
 
 </div>

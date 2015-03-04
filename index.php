@@ -116,19 +116,7 @@ $error="Your Login Name or Password is invalid";
 </form>
 </section>
 
-<section class = "searchform cf">
-<form action="" method="get">
-	<ul>
-		<li>
-			<label>Search </label>
-			<input id="bar" type="Search" name="search" >
-			<input id="submit" type="submit" value="Submit Using Ajax">
-			<input id="submit" type="submit" value="Submit Using JQuery">
-		</li>
 
-	</ul>
-</form>
-</section>
 
 
 </body>
