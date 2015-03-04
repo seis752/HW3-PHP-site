@@ -1,4 +1,3 @@
-
 <?php
 include 'core/init.php';
 include 'views/common/header.php';
@@ -6,17 +5,17 @@ protect_page();
 
 require_once("api/User.php");
 
-$action=$_GET['action'];
-$id=$_GET['id'];
+$action = $_GET['action'];
+$id = $_GET['id'];
 
-if($action === "addFriend"){
+if ($action === "addFriend") {
     // add friend
     $user = new User();
     $user->addFriend($id);
 
 }
 
-if($action === "deleteFriend"){
+if ($action === "deleteFriend") {
     // delete friend
     $user = new User();
     $user->deleteFriend($id);
@@ -25,7 +24,8 @@ if($action === "deleteFriend"){
 }
 
 
-function printUsers () {
+function printUsers()
+{
 
     // create the registration object
     $user = new User();
@@ -35,22 +35,18 @@ function printUsers () {
         return;
     }
 
-	$currentId = $_SESSION['user_id'];
+    $currentId = $_SESSION['user_id'];
     foreach ($users as $u) {
         echo "<tr>
             <td>{$u['user_id']}</td>
             <td>{$u['user_name']}</td>
             <td>{$u['user_email']}</td>
             <td>{$u['display_name']}</td>
-            <td>{$u['display_name']}</td>
-            
+
         ";
-		// Can't delete or add your self
-		if ( $currentId != $u['user_id']){
-             $friends = $user->getFriends($u['user_name']);
-            foreach($friends as $f){
-                if($u['user_name'] != $f['friend']){
-                    echo "<td>
+        // Can't delete or add your self
+        if ($currentId != $u['user_id']) {
+            echo "<td>
 
                     <a href='users.php?action=deleteFriend&id={$u['user_name']}' class='btn btn-danger'>
                         Delete Friend</a>
@@ -61,27 +57,27 @@ function printUsers () {
                         <a href='users.php?action=addFriend&id={$u['user_name']}' class='btn btn-success'>Add Friend</a>
 
                     </td>";
-                }
-            }
 
-		}
-		echo "</tr>";
+
+        }
+        echo "</tr>";
     }
 }
+
 ?>
 <section class="users-list">
     <hr>
     <h3>All Users</h3>
     <br>
     <table width='50%' class="table ">
-        <tr >
+        <tr>
             <th>User Id</th>
             <th>User Name</th>
             <th>Email</th>
             <th>Display Name</th>
 
         </tr>
-        <?php printUsers();?>
+        <?php printUsers(); ?>
 
     </table>
 
@@ -95,10 +91,10 @@ function printUsers () {
         <?php
         $userInst = new User();
         $friends = $userInst->getFriends(null);
-        foreach($friends as $f) { ?> <!-- We start our foreach loop. -->
+        foreach ($friends as $f) { ?> <!-- We start our foreach loop. -->
             <li>
                 <div class="friend-content">
-                    <h4>
+                    <h4 class="col-md-4">
                     <span>
                         <i class="glyphicon glyphicon-user"></i>
                     </span>
@@ -112,5 +108,5 @@ function printUsers () {
         <?php } ?> <!-- We end our foreach loop.
     </ul>
 </section>
-<?php include 'views/common/footer.php'?>
+<?php include 'views/common/footer.php' ?>
 

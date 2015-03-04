@@ -87,9 +87,12 @@ textarea {
 
 .friend-content h4 {
     float: left;
-    padding: 1em;
-}
 
+}
+.friend-content
+{
+    padding-top: 2em;
+}
 .friend-content a {
     float: right;
     margin-top: 1.6em;

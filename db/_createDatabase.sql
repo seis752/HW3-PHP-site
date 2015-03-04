@@ -4,7 +4,7 @@
 --
 
 
-CREATE TABLE IF NOT EXISTS `hw4`.`users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT ,
   `user_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL ,
   `user_password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL ,
@@ -40,3 +40,48 @@ CREATE TABLE IF NOT EXISTS `relationships` (
   username varchar(60) NOT NULL,
   friend varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Table INSERTS for table `users`
+--
+
+INSERT INTO users(user_name, user_email, user_password_hash, display_name)
+VALUES
+  ('abdi1','a@gmail.com','KAM', 'Abdullahi Jama'),
+('fifty','b@yahoo.com','NEWTOM', 'Fifty Cent'),
+('clinton','c@gmail.com','PHIL', 'HAHA Clinton'),
+('dex','d@hotmail.com','JUNIOR', 'Dexter'),
+('initio','e@hotmail.com','WORSE', 'Bower'),
+('hurio','f@yahoo.com','JCOLE', 'Initio'),
+('yuma','g@yahoo.com','EEBO', 'Hurio'),
+('haha','r@gmail.com','YAHZ', 'Yuma'),
+('dourad','j@gmail.com','WOWZER', 'Dourad');
+
+
+--
+-- Table INSERTS for table `relationships`
+-- Using username instead of 'id' -- important to note
+--
+
+INSERT INTO relationships(username, friend) VALUES
+  ('abdi1', 'dourad'),
+  ('clinton', 'fifty'),
+  ('abdi1', 'haha'),
+  ('haha', 'initio'),
+  ('warz', 'clinton'),
+  ('abdi1', 'fifty'),
+  ('yuma', 'haha');
+
+--
+-- Table INSERTS for table `messages`
+--
+
+INSERT INTO messages(username_from, username_to, message) VALUES
+  ('abdi1', 'dourad', 'A test message for you'),
+  ('clinton', 'fifty', 'A test message for you'),
+  ('abdi1', 'haha', 'A test message for you'),
+  ('haha', 'initio', 'A test message for you'),
+  ('warz', 'clinton', 'A test message for you'),
+  ('abdi1', 'fifty', 'A test message for you'),
+  ('yuma', 'haha', 'A test message for you');
