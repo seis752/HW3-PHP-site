@@ -1,9 +1,10 @@
 <?php
+
 /**
  * User: Warsame-Bashir
  */
-
-class User {
+class User
+{
 
     /**
      * @var object The database connection
@@ -24,7 +25,8 @@ class User {
 
     public $username = null;
 
-    function __construct() {
+    function __construct()
+    {
 
     }
 
@@ -34,23 +36,25 @@ class User {
     public function getAllUsers()
     {
 
-            $this->db_connection = new DBPDO();
+        $this->db_connection = new DBPDO();
 
-            $query = "select * from users;";
-            $users  =$this->db_connection->fetchAll($query);
-            return $users;
+        $query = "select * from users;";
+        $users = $this->db_connection->fetchAll($query);
+        return $users;
 
     }
+
     /**
      * Gets all friends in relationships table
      */
-    public function getFriends($user_name){
+    public function getFriends($user_name)
+    {
         $this->db_connection = new DBPDO();
         if (empty($user_name)) {
             $user_name = $_SESSION["user_name"];
         }
         $query = "select * from relationships r  WHERE r.username = '" . $user_name . "';";
-        $friends  =$this->db_connection->fetchAll($query);
+        $friends = $this->db_connection->fetchAll($query);
         return $friends;
     }
 
@@ -58,7 +62,8 @@ class User {
      * @param $user_name
      * @return mixed username property
      */
-    public function getUserName($user_name) {
+    public function getUserName($user_name)
+    {
         $this->db_connection = new DBPDO();
         $query = "select * from users m  WHERE m.user_name = '" . $user_name . "';";
         $user = $this->db_connection->fetch($query);
@@ -69,15 +74,16 @@ class User {
     /**
      * Add friend
      */
-    public function addFriend($friend_id){
+    public function addFriend($friend_id)
+    {
         $this->db_connection = new DBPDO();
         $user_name = $_SESSION["user_name"];
         $check_query = "select * from relationships where friend = '$friend_id'";
         $results = $this->db_connection->fetchAll($check_query);
-        if(!empty($results)){
+        if (!empty($results)) {
             // freind already exists
             echo '<h4> Friend Already Exists </h4>';
-        }else{
+        } else {
             $query = "insert into relationships  (username, friend ) values ('$user_name', '$friend_id')";
             $this->db_connection->execute($query);
             redirect("users.php");
@@ -88,18 +94,46 @@ class User {
     /**
      * Delete friend
      */
-    public function deleteFriend($friend_username){
+    public function deleteFriend($friend_username)
+    {
         $this->db_connection = new DBPDO();
         $query = "delete from relationships  where friend = '" . $friend_username . "';";
         $check_query = "select * from relationships where friend = '$friend_username'";
         $results = $this->db_connection->fetchAll($check_query);
-        if(empty($results)){
+        if (empty($results)) {
             // freind already exists
             echo '<h4> Cannot delete a none existing friend </h4>';
-        }
-        else{
+        } else {
             $this->db_connection->execute($query);
             redirect("users.php");
+        }
+
+    }
+
+    /**
+     * @param $query
+     * Queries for user
+     */
+    public function searchUser($query)
+    {
+        $this->db_connection = new DBPDO();
+        $query = "select * from users where user_name LIKE '%" . $query . "%'";
+        $results = $this->db_connection->fetchAll($query);
+        if (empty($results)) {
+            return '<h4> No Users Found </h4>';
+        } else {
+            foreach($results as $data){
+
+                    $context = '<table class="table">
+              <tr style="background-color:pink;">
+                <td style="font-size:18px;">'.$data["user_name"].'</td>
+                <td style="font-size:18px;">'.$data["display_name"].'</td>
+              </tr></table>';
+                '';
+                return $context;
+
+            }
+
         }
 
     }

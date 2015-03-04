@@ -7,22 +7,28 @@ require_once("api/User.php");
 
 $action = $_GET['action'];
 $id = $_GET['id'];
+$query = $_GET['query'];
+$min_length = 3;
+$user = new User();
 
 if ($action === "addFriend") {
     // add friend
-    $user = new User();
+
     $user->addFriend($id);
 
 }
 
 if ($action === "deleteFriend") {
     // delete friend
-    $user = new User();
     $user->deleteFriend($id);
 
+}
+// if query length is greater than $min_length
+if (strlen($query) >= $min_length) {
+    // delete friend
+    $user->searchUser($query);
 
 }
-
 
 function printUsers()
 {
@@ -65,6 +71,16 @@ function printUsers()
 }
 
 ?>
+<section class="search-holder text-center">
+    <form action="users.php" method="GET" class="search-form">
+        <input type="text" name="query" class="search-input"/>
+        <input type="submit" value="Search" class="search-button" />
+    </form>
+    <div class="text-center">
+        <?php $results = $user->searchUser($query);
+                echo $results;?>
+    </div>
+</section>
 <section class="users-list">
     <hr>
     <h3>All Users</h3>
