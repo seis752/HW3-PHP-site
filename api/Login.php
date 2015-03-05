@@ -1,4 +1,9 @@
 <?php
+
+session_start();
+
+
+
 /**
  * Created by PhpStorm.
  * User: Warsame-Bashir
@@ -10,6 +15,7 @@
 /**
  * Class login
  * handles the user's login and logout process
+
  */
 class Login
 
@@ -114,9 +120,12 @@ class Login
     public function performLogout()
     {
         // delete the session of the user
-        $_SESSION = array();
-        session_start();
-        session_destroy();        // return a little feeedback message
+        // create/read session
+           
+           unset($_SESSION['user_id']);
+                   //session_destroy();        // return a little feeedback message
+
+    
         $this->messages[] = "Goodbye! You are logged out";
     }
 

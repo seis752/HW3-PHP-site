@@ -33,6 +33,9 @@ function echoActiveClassIfRequestMatches($requestUri)
                 <li <?php echoActiveClassIfRequestMatches("users") ?>>
                     <a href="users.php">Users</a>
                 </li>
+                <li>
+                    <li><a href="search_ajax.php">Search AJAX</a></li>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -43,6 +46,7 @@ function echoActiveClassIfRequestMatches($requestUri)
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Messages</a></li>
+
                     </ul>
                 </li>
             </ul>

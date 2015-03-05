@@ -90,7 +90,7 @@ function printUsers()
 <section class="users-list">
     <hr>
     <br>
-    <table width='50%' class="table ">
+    <table width='50%' class="table " id="usersList">
         <tr>
             <th>User Id</th>
             <th>User Name</th>
