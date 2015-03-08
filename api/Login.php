@@ -123,7 +123,9 @@ class Login
         // create/read session
            
            unset($_SESSION['user_id']);
-                   //session_destroy();        // return a little feeedback message
+           session_destroy();
+            redirect("index.php");
+                   // return a little feeedback message
 
     
         $this->messages[] = "Goodbye! You are logged out";

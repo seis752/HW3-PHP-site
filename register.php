@@ -2,7 +2,6 @@
 
 
 // include the configs / constants for the database connection
-require_once("config/database.php"); #todo repeated here avoid
 
 
 require_once("api/Registration.php");

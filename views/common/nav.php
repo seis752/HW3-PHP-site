@@ -34,8 +34,12 @@ function echoActiveClassIfRequestMatches($requestUri)
                     <a href="users.php">Users</a>
                 </li>
                 <li>
-                    <li><a href="search_ajax.php">Search AJAX</a></li>
+                <li><a href="search_xml.php">Search AJAX</a></li>
                 </li>
+                <li>
+                    <li><a href="search_ajax.php">Search AJAX 2</a></li>
+                </li>
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
