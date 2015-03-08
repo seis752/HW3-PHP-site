@@ -2,7 +2,7 @@
 -- version 3.3.10.4
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
+-- Host: ftp.llhosts.com
 -- Generation Time: Feb 22, 2015 at 09:28 PM
 -- Server version: 5.1.56
 -- PHP Version: 5.3.29

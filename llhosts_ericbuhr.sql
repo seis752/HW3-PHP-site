@@ -2,7 +2,7 @@
 -- version 3.3.10.4
 -- http://www.phpmyadmin.net
 --
--- Host: ftp.llhosts.com
+-- Host: mysql.seis752.com
 -- Generation Time: Feb 22, 2015 at 09:40 PM
 -- Server version: 5.1.56
 -- PHP Version: 5.3.29
@@ -16,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `llhosts_ericbuhr`
+-- Database: `seis752eric_db`
 --
 
 -- --------------------------------------------------------

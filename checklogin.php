@@ -1,11 +1,11 @@
-<?php
-include login.php
-if(isset($_SESSION['session'])){
-  	$session = $_SESSION['session'];
+<?PHP
+if(isset($_COOKIE['cookie'])){
+    $cookie = $_COOKIE['cookie'];
 }
 else{
     // Cookie is not set
-	header('Location:/index.php');
-	{
+	header('Location: http://www.cambrian3940.net/portal.php');
 exit;
+
+}
 ?>
