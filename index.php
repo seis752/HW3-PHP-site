@@ -1,17 +1,26 @@
+<?php
+include navbar.php
+include once('loggedin.php');
+
+session_start();
+	if(!isset($_SESSION['user'])) {
+		header("Location:login.php");
+		{
+?>
 <!DOCTYPE html>
 <head>
-	<title>Simple Form</title>
+	<title>Home Login</title>
 </head>
 
 <body>
-<h1>SEIS752 Advanced Web Application Development<br />
-  Simple Forms
-</h1>
-<form action="/x/y/z" method="POST"> 
-    Value1: <input type="text" name="value1"/><br /> 
-    Value2: <input type="text" name="value2" value="47"/><br /> 
+<h1>Home Login<br /></h1>
+<form action="login.php" method="POST"> 
+    Username: <input type="text" name="username" id="username"/><br /> 
+    Password: <input type="password" name="password" id="password"/><br /> 
     <input type="submit" value="Submit"/> 
-</form> 
+</form>
+<!--a href="logout.php">Logout</a--> 
 
+<!--a href="search.php">Search</a--> 
 </body>
 </html>

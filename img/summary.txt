@@ -1,0 +1,24 @@
+Experience using MySQL and PHP
+
+This is the first time I've used MySQL. I have previous experience with SQLite and PHP from Marius' class. Other than 
+not requiring username and password. SQLite and MySQL are fairly similar. SQLite is a bit easier. Both have the logical
+table structure with column fields and rows for records. Both graphical interface applications are fairly easy to use.
+
+PHP is well-suited for working with databases. The special variable names like $GET, $POST and $REQUEST are all useful when
+dealing with databases and are shortcuts for long variable names. PHP has many quick functions or shortcuts like include or the
+tags <?php ?> which make it extremely easy to drop PHP in between other code on a web page. It's ability to create logic structures
+like loops and conditionals also help you with the flexibility of how you can read, sort and write data into a database. But it 
+also makes the syntax tricky and more challenging since more nesting requires additional brackets. PHP can be picky about syntax. 
+
+PHP and MySQL are great on cost since they are both open-source technologies, the support community is fairly large, literature
+is pretty extensive on them. MySQL also has some good database building tools. Both are straighforward to learn but PHP syntax 
+and flexibility make it toughter to learn. As for quality, both are very mature for the web since they were first introduced 20 years 
+ago in 1995. With that long life, there is a considerable base of experts from whom to draw assistance. MySQl seems better with speed. 
+PHP is not blazing but it has improved. The adoption rate has been very high on MySQL and good for PHP. But other databases such as 
+No SQL and other technologies like node.js are growing in popularity. 
+
+The PHP and MySQL environment makes a good team. One is very flexible while the other has a consisitent structure and
+orgnaization for a database. The challenge is designing the tables and fields in such a way to make it easier to find or extract data 
+and manipulate the database. You typically find that you wished you had set up the fields a slightly different way after you dive into 
+coding (like with how I set the primary key in relationships). The toughest challenge with PHP has been the syntax for me. I may not
+ be an expert in either technology but I do see the appeal of using both together in web development. 
