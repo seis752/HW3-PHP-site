@@ -1,12 +1,12 @@
 <?php
-include("lock.php");
-include("config.php");
+include_once("lock.php");
+include_once("config.php");
 /* need to fix */
 /* include("updatevalue.php"); */
-include("showmessage.php");
-include("showfriend.php");
-include("allusers.php");
-include("viewmsg.php");
+include_once("showmessage.php");
+include_once("showfriend.php");
+include_once("allusers.php");
+include_once("viewmsg.php");
 ?>
 <!DOCTYPE HTML>
 <head>
@@ -17,11 +17,46 @@ include("viewmsg.php");
 	<link rel="icon" href="faviorico_qh.ico" type="image/x-icon">
 	<link href="css/bootstrap.css" rel='stylesheet' type="text/css" />
 	<link href="css/style.css" rel='stylesheet' type="text/css" />
+	<script type="text/javascript">
+	function handrolled(){
+	var namesearchjs = document.getElementById('nameSearch').value;
+	//alert(namesearchjs);
+	
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange= function(){
+		if(xhr.readyState==4){
+			//alert(xhr.responseText);
+			document.getElementById("resultshere").innerHTML = xhr.responseText;
+			}
+		}
+	xhr.open('GET','searchresults.php?nameSearch=' + namesearchjs,true);
+	xhr.send(null);
+	}
+	</script>
+	
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js">
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function (){
+	
+
+		$("#jqueryroller").click(function(){
+		var namesearchjq = $('#nameSearch').val();
+		//alert(namesearchjq);
+			
+			$("#resultshere").load("searchresults.php?nameSearch="+ namesearchjq);
+		
+			
+		});
+	});
+	
+	</script>
+	
 </head>
 
 <body>
 	<div class="header">
-		<div class="container">
+			<div class="container">
 			<div class="row">
 			  <div class="col-md-12">
 				 <div class="header-left">
@@ -44,19 +79,20 @@ include("viewmsg.php");
 	    </div>
 	</div>
 <div class="main">
-		<section class = "searchform cf">
-			<form action="" method="get">
+		<section class="searchform cf">
+			<form action="searchresults.php" method="get">
 			<ul>
 				<li>
 				<label>Search </label>
-				<input id="bar" type="Search" name="search" >
-				<input id="submit" type="submit" value="Submit Using Ajax">
-				<input id="submit" type="submit" value="Submit Using JQuery">
+				<input id="nameSearch" type="text" name="nameSearch"  />
+				<input type="button" value="Submit Using Ajax" onclick="handrolled();"/>
+				<input id="jqueryroller" type="button" value="Submit Using JQuery" />
 				</li>
+				<div id="resultshere" ></div>
 			</ul>
 			</form>
 		</section>
-		
+
 	<div class="container">
 	<h3>Hello <?php echo $login_session; ?></h3> 
 	<div class="message">
