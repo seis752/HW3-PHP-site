@@ -2,23 +2,17 @@
 -- version 3.3.10.4
 -- http://www.phpmyadmin.net
 --
--- Host: mysql.seis752.com
--- Generation Time: Feb 22, 2015 at 09:40 PM
+-- Host: ftp.llhosts.com
+-- Generation Time: Feb 22, 2015 at 09:28 PM
 -- Server version: 5.1.56
 -- PHP Version: 5.3.29
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
--- Database: `seis752eric_db`
---
-
+-- Database: `llhosts_ericbuhr`
+-- Username: `llhosts_ericbuhr`
+-- Password:  `v9SPf1faFqgn`	
 -- --------------------------------------------------------
 
 --
@@ -31,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `message` varchar(4000) NOT NULL,
   PRIMARY KEY (`messageid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2001 ;
 
 --
 -- Dumping data for table `messages`
@@ -49,17 +43,17 @@ CREATE TABLE IF NOT EXISTS `relationships` (
   `usernamerel` varchar(60) NOT NULL,
   `friendname` varchar(60) NOT NULL,
   PRIMARY KEY (`relationshipid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2001 ;
 
 --
 -- Dumping data for table `relationships`
 --
 
 INSERT INTO `relationships` (`relationshipid`, `usernamerel`, `friendname`) VALUES
-(1, 'rjones@abcco.com', 'dhughes@honeymead.com'),
-(2, 'rjones@abcco.com', 'tgriffiths@mnsu.edu'),
-(3, 'ehumphries@snowden.net', 'adavies@plaidcymru.org'),
-(4, 'ehumphries@snowden.net', 'kwilliams@stthomas.edu');
+(1, 'rjones', 'dhughes'),
+(2, 'rjones', 'tgriffiths'),
+(3, 'ehumphreys', 'adavies'),
+(4, 'ehumphreys', 'kwilliams');
 
 -- --------------------------------------------------------
 
@@ -67,22 +61,26 @@ INSERT INTO `relationships` (`relationshipid`, `usernamerel`, `friendname`) VALU
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `username` varchar(60) NOT NULL,
+`id` bigint(16) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `username` varchar(80) DEFAULT NULL,
   `password` varchar(60) NOT NULL,
-  `displayname` varchar(60) NOT NULL,
-  PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `lat` decimal(10,6) DEFAULT NULL,
+  `lon` decimal(10,6) DEFAULT NULL,
+  `profile_img_url` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2001 ;
+
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `password`, `displayname`) VALUES
-('adavies@plaidcymru.org', 'nop121314', 'Anwen Davies'),
-('dhughes@honeymead.com', 'hij678', 'Daffyd Hughes'),
-('ehumphries@snowden.net', 'qrs151617', 'Eira Humphreys'),
-('eroberts@judson.net', 'klm91011', 'Evan Roberts'),
-('kwilliams@stthomas.edu', 'efg345', 'Kyffin Williams'),
-('rjones@abcco.com', 'abc123', 'Rhys Jones'),
-('tgriffiths@mnsu.edu', 'tuv181920', 'Tegan Griffiths');
+INSERT INTO `users` ( `name`, `username`, `password`, `lat` , `lon` , `image_url`) VALUES
+( 1 , 'Anwen Davies', 'adavies', 'abc123', '45', '95' , 'http://www.blueearth.org/images/annpic.jpg'),
+( 2 , 'Daffyd Hughes', 'dhughes', 'abc123', '43' , '97' , 'http://www.honeymead.com/images/daffyd.gif'),
+( 3 , 'Eira Humphreys', 'ehumphreys' , 'abc123', '54', '4' , 'http://www.snowden.net/photos/eiraphoto.jpg'),
+( 4 , 'Evan Roberts', 'eroberts', 'abc123', '43' , '98' ,'http://www.judson.org/photos/ive.gif'),
+( 5 , 'Kyffin Williams' , 'kwilliams' , 'abc123', '45' , '95' , 'http://www.stthomas.edu/departments/arthistory/faculty/photos/kyffinpic.png'),
+( 6 , 'Rhys Jones', 'rjones' , 'abc123', '54' , '6' , 'http://www.plaidcymru.org/photos/rhysj_photo.gif'),
+( 7 , 'Tegan Griffiths' , 'tgriffiths' , 'abc123', '43' , '97' , 'http://www.mnsu.edu/depts/languages/images/tgriffiths.jpg');
