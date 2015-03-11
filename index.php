@@ -1,8 +1,12 @@
+<?php
+	include_once("loggedin.php");
+?>
+
 <!DOCTYPE html>
 <head>
 	<title>Simple Form</title>
 </head>
-
+<html>
 <body>
 <h1>SEIS752 Advanced Web Application Development<br />
   Simple Forms
@@ -13,5 +17,7 @@
     <input type="submit" value="Submit"/> 
 </form> 
 
+<a href="logout.php">Logout</a>
+<a href="search.php">Search</a>
 </body>
 </html>
