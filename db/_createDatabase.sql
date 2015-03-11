@@ -93,10 +93,11 @@ INSERT INTO messages(username_from, username_to, message) VALUES
 
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` bigint(16) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
+  `user_id` bigint(16) unsigned NOT NULL AUTO_INCREMENT,
+  `display_name` varchar(255) DEFAULT NULL,
   `username` varchar(80) DEFAULT NULL,
-  `password` varchar(60) NOT NULL,
+  `user_password_hash` varchar(60) NOT NULL,
+  `user_email` varchar(64) COLLATE utf8_unicode_ci NULL,
   `lat` decimal(10,6) DEFAULT NULL,
   `lon` decimal(10,6) DEFAULT NULL,
   `profile_img_url` varchar(500) NOT NULL,
