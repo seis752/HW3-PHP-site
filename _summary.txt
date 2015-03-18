@@ -9,3 +9,8 @@ directly without placing them in the correct location which isn't apparent immed
 UI, database and services made it difficult to accomplish all the tasks.
 
 The benefit however is that PHP gives developers the ability to start backend dev work immediately with the ```<?php``` keyword
+
+
+HW6:
+
+The changes in HW6 are assuming that twilio messages are stored in their own table `twilio` but displayed in the same view.
