@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<head>
-	<title>Simple Form</title>
-</head>
+<?php
+// include the database connection details
+include 'core/init.php';
+include 'views/common/header.php';
 
-<body>
-<h1>SEIS752 Advanced Web Application Development<br />
-  Simple Forms
-</h1>
-<form action="/x/y/z" method="POST"> 
-    Value1: <input type="text" name="value1"/><br /> 
-    Value2: <input type="text" name="value2" value="47"/><br /> 
-    <input type="submit" value="Submit"/> 
-</form> 
 
-</body>
-</html>
+// create a login object and return object class for method invocations
+$login = new Login();
+
+
+if ($login->isUserLoggedIn() == true) {
+    // the user is logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are logged in" view.
+    require_once('messages.php');
+
+} else {
+    // the user is not logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are not logged in" view.
+    include("views/login.php");
+}?>
+
+
+<?php include 'views/common/footer.php'?>
