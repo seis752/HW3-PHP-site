@@ -3,13 +3,13 @@ if ( !is_writable(session_save_path()) ) {
    echo 'Session save path "'.session_save_path().'" is not writable!'; 
 }
 ini_set('display_errors', 'on'); error_reporting(-1);
-$_SESSION['debug'] = 'FALSE'; //    TRUE;      'FALSE';
-if ($_SESSION['debug']==='TRUE') {
+ $_SESSION['debug'] = 'FALSE'; //    TRUE;      'FALSE';
+// if ($_SESSION['debug']==='TRUE') {
     echo '$_SESSION[name] =  '; echo $_SESSION['name'];  echo '<br />' ;
     echo 'session_id() =     '; echo session_id();  echo '<br />' ;
     echo 'email =      '; echo  $_SESSION['email'] ;  echo '<br />' ; 
     echo 'password =   '; echo  $_SESSION['password'] ;  echo '<br />' ; 
-}
+// }
  ?>
 <!DOCTYPE html>
 <html>
@@ -26,11 +26,22 @@ if ($_SESSION['debug']==='TRUE') {
 <body>
     
     <?php
+      //if(!(isset($_SESSION['email']))){
+      if((isset($_POST['email']))){
          $email=$_POST['email'];
          $password=$_POST["password"];
          $name=$_POST["name"];
-         $newUser=$_POST["newUser"];   // echo "newUser = "; echo  $newUser;  echo '<br />' ;
-         
+         $newUser=$_POST["newUser"];    echo "newUser = "; echo  $newUser;  echo '<br />' ;
+          if ($_SESSION['debug']==='TRUE') {echo "AAAAAAAAAAAA";}
+      }  else {
+         $email= $_SESSION['email'];
+         $password= $_SESSION["password"];
+         $name= $_SESSION['name'];
+         if ($_SESSION['debug']==='TRUE') {echo "BBBBBBBBBBBBBBBBB";}
+         $newUser="no";
+         $_SESSION['newUser'] = $newUser;
+     }
+    
          if (!($connection = mysql_connect("mysql.seis752.com","seis752john","ySAw48qrLe")))  {
            die("Error at mysql_connect" . mysql_error()); 
          }
@@ -88,7 +99,7 @@ if ($_SESSION['debug']==='TRUE') {
             } else {
                  echo "password is WRONG";  
             } 
-            echo '<br />WELCOME ' ; $_POST["email"]; 
+            echo '<br />WELCOME ' ; $email; 
         }  ?>
  
           Your user ID is:  <?php echo $_SESSION['email']  ?>;

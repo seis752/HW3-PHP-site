@@ -86,7 +86,6 @@ if ($_SESSION['debug']==='TRUE') {
     <input type="submit" value="Submit"/> 
     </form> 
     <br /> 
-    for debugging  Sue = 1 , friend Ted = 3
         
     <br />   <br />  <?php
     $query = "SELECT m.message, u.username FROM Messages m, users u 
