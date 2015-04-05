@@ -14,7 +14,7 @@ if ($_SESSION['debug']==='TRUE') {
 ?>
 <!DOCTYPE html>
     <head>
-        <title>PostNewFriend Page</title>
+        <title>UN-Friend Page</title>
     </head>    
   <?php
        $yourID = $_POST['yourID'];  echo $yourID ;   echo '<br />' ;
@@ -26,17 +26,16 @@ if ($_SESSION['debug']==='TRUE') {
          }
         if (!mysql_select_db("seis752john_db",$connection))  {
             die("Error at select_db" . mysql_errorno() .": " . mysql_error()); }
-
-        $query = "INSERT INTO Relationships( userIDs, friendIDs)\n"
-               . "VALUES ( '". $yourID.  "', '" . $friendID . "');";
-        
+//DELETE FROM  `Relationships` WHERE userIDs =5 AND friendIDs =24;
+        $query = "DELETE FROM Relationships WHERE userIDs = ". $yourID." AND friendIDs = " . $friendID . ";";
+        echo $query ;
         if (!($result = mysql_query($query,$connection))) {
-            die("Error at insert_query");  }
+            die("Error at delete_query");  }
 
         if (!mysql_close($connection))  {
             die("Error " . mysql_errorno() .": " . mysql_error()); }
   ?>  
     
-   <br>  <a href ="ShowAllUsers.php">GoTO_ShowAllUsers</a> <br>   
+   <br>  <a href ="profilePage.php">GoTo_ProfilePage</a> <br>   
     
 </html>

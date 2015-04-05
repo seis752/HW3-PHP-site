@@ -5,16 +5,18 @@ if ( !is_writable(session_save_path()) ) {
 }
 ini_set('display_errors', 'on'); error_reporting(-1);
 
-echo '$_SESSION[sid] =   '; echo $_SESSION['sid']; echo '<br />' ;
-echo '$_SESSION[name] =  '; echo $_SESSION['name'];  echo '<br />' ;
-echo 'session_id() =     '; echo session_id();  echo '<br />' ;
-echo 'email =      '; echo  $_SESSION['email'] ;  echo '<br />' ; 
-echo 'password =   '; echo  $_SESSION['password'] ;  echo '<br />' ; 
+if ($_SESSION['debug']==='TRUE') {
+    echo '$_SESSION[name] =  '; echo $_SESSION['name'];  echo '<br />' ;
+    echo 'session_id() =     '; echo session_id();  echo '<br />' ;
+    echo 'email =      '; echo  $_SESSION['email'] ;  echo '<br />' ; 
+    echo 'password =   '; echo  $_SESSION['password'] ;  echo '<br />' ; 
+ }
 ?>
 <!DOCTYPE html>
     <head>
         <title>ShowAllUsers Page</title>
     </head>    
+    <br>  <a href ="profilePage.php">GoTO_ProfilePage</a> <br>  
 <?php
   if (!($connection = mysql_connect("mysql.seis752.com","seis752john","ySAw48qrLe")))  {
      die("Error at mysql_connect" . mysql_error()); 
@@ -22,7 +24,7 @@ echo 'password =   '; echo  $_SESSION['password'] ;  echo '<br />' ;
   if (!mysql_select_db("seis752john_db",$connection))  {
       die("Error at select_db" . mysql_errorno() .": " . mysql_error()); }
 
-  $query = "SELECT ID, UserNames FROM Users LIMIT 0, 30 ";
+  $query = "SELECT ID, username FROM users LIMIT 0, 30 ";
 
   if (!($result = mysql_query($query,$connection))) {
      die("Error at SelectAllUsers_query");  }

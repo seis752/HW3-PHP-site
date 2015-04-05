@@ -5,11 +5,12 @@ if ( !is_writable(session_save_path()) ) {
 }
 ini_set('display_errors', 'on'); error_reporting(-1);
 
-echo '$_SESSION[sid] =   '; echo $_SESSION['sid']; echo '<br />' ;
-echo '$_SESSION[name] =  '; echo $_SESSION['name'];  echo '<br />' ;
-echo 'session_id() =     '; echo session_id();  echo '<br />' ;
-echo 'email =      '; echo  $_SESSION['email'] ;  echo '<br />' ; 
-echo 'password =   '; echo  $_SESSION['password'] ;  echo '<br />' ; 
+if ($_SESSION['debug']==='TRUE') {
+    echo '$_SESSION[name] =  '; echo $_SESSION['name'];  echo '<br />' ;
+    echo 'session_id() =     '; echo session_id();  echo '<br />' ;
+    echo 'email =      '; echo  $_SESSION['email'] ;  echo '<br />' ; 
+    echo 'password =   '; echo  $_SESSION['password'] ;  echo '<br />' ; 
+}  
 ?>
 <!DOCTYPE html>
      <head>
