@@ -102,6 +102,12 @@ if ($_SESSION['debug']==='TRUE') {
     if (!mysql_close($connection))  {
         die("Error " . mysql_errorno() .": " . mysql_error()); }
     ?>
+    <br />   <br /> 
+        use this form to log out
+    <form action="logout.php" method="POST">  
+    <input type="submit" value="Submit"/> 
+    </form> 
+    <br />   <br /> 
 </body>
 
 </html>

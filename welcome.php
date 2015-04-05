@@ -1,4 +1,7 @@
 <?php session_start();
+if(!(isset($_SESSION['email'])) && !(isset($_POST['email']))  ){
+          header('Location: index.php');
+}
 if ( !is_writable(session_save_path()) ) {
    echo 'Session save path "'.session_save_path().'" is not writable!'; 
 }
@@ -25,8 +28,7 @@ ini_set('display_errors', 'on'); error_reporting(-1);
     </ul>
 <body>
     
-    <?php
-      //if(!(isset($_SESSION['email']))){
+    <?php  
       if((isset($_POST['email']))){
          $email=$_POST['email'];
          $password=$_POST["password"];
