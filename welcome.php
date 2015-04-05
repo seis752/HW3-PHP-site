@@ -3,6 +3,13 @@ if ( !is_writable(session_save_path()) ) {
    echo 'Session save path "'.session_save_path().'" is not writable!'; 
 }
 ini_set('display_errors', 'on'); error_reporting(-1);
+$_SESSION['debug'] = 'FALSE'; //    TRUE;      'FALSE';
+if ($_SESSION['debug']==='TRUE') {
+    echo '$_SESSION[name] =  '; echo $_SESSION['name'];  echo '<br />' ;
+    echo 'session_id() =     '; echo session_id();  echo '<br />' ;
+    echo 'email =      '; echo  $_SESSION['email'] ;  echo '<br />' ; 
+    echo 'password =   '; echo  $_SESSION['password'] ;  echo '<br />' ; 
+}
  ?>
 <!DOCTYPE html>
 <html>
@@ -90,8 +97,16 @@ ini_set('display_errors', 'on'); error_reporting(-1);
 
           SESSION name is:  <?php echo $_SESSION['name'] ?>;
           SESSION(ID) is:    <?php echo session_id()  ?>;
-         <br>
-     
+         <br> <br>
+         <h2><br />  Search by Name  <br/></h2>
+     this search will POST to a php page; no AJAX or jQuery is used  <br/>
+     <h5> Enter a name like: Lael Tillman or Tillman</h5>
+
+    <form action="searchPage.php" method="POST">  <!-- identifies target page for SUBMIT -->
+      searchName: <input type="text" name="searchName"/><br /> 
+      <input type="submit" value="Search"/> 
+    </form> 
+
      <?php
  /*    
 if(!isset($_COOKIE[$cookie_name])) {
