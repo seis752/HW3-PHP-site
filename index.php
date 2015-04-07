@@ -1,22 +1,23 @@
-﻿
+<?php
+	include_once("loggedin.php");
+?>
+
 <!DOCTYPE html>
-
-<html>
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<title>Simple Form</title>
 </head>
-
+<html>
 <body>
 <h1>SEIS752 Advanced Web Application Development<br />
   Simple Forms
 </h1>
-<form action="login.php" method="POST"> 
-    Username: <input type="text" name="username"/><br /> 
-    Password: <input type="text" name="password" /><br /> 
+<form action="/x/y/z" method="POST"> 
+    Value1: <input type="text" name="value1"/><br /> 
+    Value2: <input type="text" name="value2" value="47"/><br /> 
     <input type="submit" value="Submit"/> 
-    
- </form> 
- 
- </body>
+</form> 
 
+<a href="logout.php">Logout</a>
+<a href="search.php">Search</a>
+</body>
 </html>
