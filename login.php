@@ -1,42 +1,40 @@
 ﻿<?php
+	include_once"settings.php";
 	
-	session_start();
-
-	$username = $_POST['username'];	
-    $password = $_POST['password'];
-    
-    if ($username&&$password)
-    	{
-    		$conn = mysqli_connect("mysql.seis752.com", "seis752jed", "LddnXSyhDX") or die("Connection Failed!");
-    		mysqli_select_db($conn, "seis752jed_db") or die ("Database was not found!");
-    		
-    		$query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
-    		
-    		$numrows = mysqli_num_rows($query);
-    		
-    		if ($numrows != 0)
-    			{	
-    				while ($row = mysqli_fetch_assoc($query))
-    					{
-    						$dbusername = $row['username'];
-    						$dbpassword = $row['password'];
-    					}
-    					
-    					if ($username==$dbusername&&$password==$dbpassword)
-    						{
-    							echo "Success! <a href='member.php'>Click</a> here to enter the member page";
-    							$_SESSION['username'] = $username;
-    						}    						
-    						
-    						else
-    							echo "Incorrect username and password!";
-    			}
-    				else
-    					die("Username does not exist");
-    		
-    	}   					
-    					
-    	else
-    		die ("Please enter a username and password");
+	if($_SESSION['user']){
+		echo "<meta http-equiv='refresh' content='0;url=index.php'>";;
+	}
+	
+	if(isset($_GET['username'])){
+		
+		$name = $_GET['username'];
+		$password = $_GET['password'];
+		$sql = "SELECT * FROM users WHERE username = '$name' and password = '$password'";
+		
+		$result = mysql_query($sql);
+		while($row = mysql_fetch_array($result)){
+			$_SESSION['user'] = $name;
+			echo "<meta http-equiv='refresh' content='0;url=index.php'>";;
+		}
+	}
 ?>
 
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Login Page</title>
+</head>
+
+<body>
+	<form action="login.php" method="get">
+		Username: <input type="text" name="username" id="username" >
+		<br>
+		Password: <input type="text" name="password" id="password" >
+		<br>
+		<input type="submit" name="submit" id="submit" >
+    </form>
+</body>
+
+</html>
