@@ -61,7 +61,8 @@ session_start();
 
             // showing the login & register or logout link
             if (logged_in() == true) {
-                echo '<div class="right" style="text-align:right;  "><a href="logout.php"><input type="submit" name="submit" class="login login-submit" value="Logout" /></a></div>';
+                echo '<div class="right" style="text-align:right;  "><a href="logout.php">Logout</a></div>';
+
             } else {
                 echo '<a href="login.php">Login</a> | <a href="register.php">Register</a>';
             }
@@ -101,6 +102,7 @@ session_start();
             exit();
         }
 
+
     }
 
 
@@ -113,6 +115,9 @@ session_start();
 
     $mysqli->close();
     ?>
+
+
+
 
 
 
