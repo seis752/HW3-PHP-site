@@ -6,7 +6,6 @@
 		redirect_to("profile.php");
 	}
 ?>
-
 <html>
 <head>
 	<title>User Login</title>
